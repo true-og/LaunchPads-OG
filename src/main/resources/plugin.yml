@@ -1,0 +1,16 @@
+name: LaunchPad
+version: '${version}'
+main: me.barny1094875.launchpad.LaunchPad
+api-version: 1.18
+commands:
+  givepad:
+    usage: /givepad
+  reloadpadconfig:
+    usage: /reloadpadconfig
+  setPad:
+    usage: /setpad
+permissions:
+  launchpad.cangive:
+    default: op
+  launchpad.canreload:
+    default: op
