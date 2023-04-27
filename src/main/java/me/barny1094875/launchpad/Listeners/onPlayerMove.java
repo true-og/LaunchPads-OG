@@ -99,7 +99,7 @@ public class onPlayerMove implements Listener {
                                 //                 \/ --------- \/
                                 for(int j = 0; j < yPower * 8 - 15; j++){
                                     Bukkit.getScheduler().runTaskLater(LaunchPad.getPlugin(), () -> {
-                                        player.spawnParticle(Particle.SPELL, player.getLocation(), (int) (xPower * zPower * 2));
+                                        player.spawnParticle(Particle.SPELL, player.getLocation(), (int) (xPower * zPower * playerParticleMult));
                                     }, j);
                                 }
 
