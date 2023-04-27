@@ -71,9 +71,9 @@ public class onPlayerMove implements Listener {
 
                                 FileConfiguration launchConfig = LaunchPad.config().getConfig();
                                 // get the xpower, ypower, and zpower
-                                int xPower = launchConfig.getInt(i + ".xpower");
-                                int yPower = launchConfig.getInt(i + ".ypower");
-                                int zPower = launchConfig.getInt(i + ".zpower");
+                                double xPower = launchConfig.getDouble(i + ".xpower");
+                                double yPower = launchConfig.getDouble(i + ".ypower");
+                                double zPower = launchConfig.getDouble(i + ".zpower");
 
                                 player.setVelocity(new Vector(
                                 /* x */  xPower * directionVector.getX() * velocityMult,
@@ -82,24 +82,24 @@ public class onPlayerMove implements Listener {
 
                                 // player a wither shoot sound
                                 player.playSound(playerLocation, Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
-                                // spawn a particle at the launch pad
+                                // spawn particles at the launch pad
                                 Location padLocation = new Location(player.getWorld(),
                                         launchConfig.getInt(i + ".x") + 0.5,
                                         launchConfig.getInt(i + ".y"),
                                         launchConfig.getInt(i + ".z") + 0.5);
-//                                player.spawnParticle(Particle.SPELL, padLocation, 100);
-                                // dragons breath
-                                // firework rocket trail
-                                // copper wax on
-                                player.spawnParticle(Particle.FIREWORKS_SPARK, padLocation, 150, 0, 0, 0, 0.2);
+                                double padParticleCount = launchConfig.getDouble("padLaunchParticleCount");
+                                double padParticlePower = launchConfig.getDouble("padLaunchParticlePower");
+                                player.spawnParticle(Particle.FIREWORKS_SPARK, padLocation, (int) padParticleCount, 0, 0, 0, 0.2 * padParticlePower);
 
+
+                                double playerParticleMult = launchConfig.getDouble("playerLaunchParticleCountMultipier");
                                 // spawn particles on the player as they fly through the air
                                 // This equation was gotten with a linear regression on different amounts of yPower
                                 // to find what the vertex of the player's jump is
                                 //                 \/ --------- \/
                                 for(int j = 0; j < yPower * 8 - 15; j++){
                                     Bukkit.getScheduler().runTaskLater(LaunchPad.getPlugin(), () -> {
-                                        player.spawnParticle(Particle.SPELL, player.getLocation(), xPower * zPower * 2);
+                                        player.spawnParticle(Particle.SPELL, player.getLocation(), (int) (xPower * zPower * 2));
                                     }, j);
                                 }
 

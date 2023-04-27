@@ -1,5 +1,6 @@
 package me.barny1094875.launchpad.Listeners;
 
+import co.aikar.util.JSONUtil;
 import me.barny1094875.launchpad.LaunchPad;
 import me.barny1094875.launchpad.config.Config;
 import net.kyori.adventure.text.Component;
@@ -48,9 +49,9 @@ public class onBlockBreak implements Listener {
                                 padCoords.set("" + j + ".y", padCoords.getInt("" + (j + 1) + ".y"));
                                 padCoords.set("" + j + ".z", padCoords.getInt("" + (j + 1) + ".z"));
                                 padCoords.set("" + j + ".world", padCoords.getString("" + (j + 1) + ".world"));
-                                padCoords.set("" + j + ".xpower", padCoords.getInt("" + (j + 1) + ".xpower"));
-                                padCoords.set("" + j + ".ypower", padCoords.getInt("" + (j + 1) + ".ypower"));
-                                padCoords.set("" + j + ".zpower", padCoords.getInt("" + (j + 1) + ".zpower"));
+                                padCoords.set("" + j + ".xpower", padCoords.getDouble("" + (j + 1) + ".xpower"));
+                                padCoords.set("" + j + ".ypower", padCoords.getDouble("" + (j + 1) + ".ypower"));
+                                padCoords.set("" + j + ".zpower", padCoords.getDouble("" + (j + 1) + ".zpower"));
                                 // this makes it easier to search the config file
                                 // use CTRL+F and search for the coords of the pad
                                 padCoords.set("" + j + ".searchID", padCoords.getString("" + (j + 1) + ".searchID"));
