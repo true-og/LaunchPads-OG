@@ -49,6 +49,16 @@ defaultYpower is the default y power value that will be used when creating a lau
 
 defaultZpower is the default z power value that will be used when creating a launch pad.
 
+idleParticleCount is the number of particles emmited by the launch pads when they are not in use
+
+idleParticlePower is how far the particles are shot from the center of the launch pad when they are not in use
+
+padLaunchParticleCount is the number of particles produced by the launch pads when a launch occurs
+
+padLaunchParticlePower is how far the particles are shot from the center of the launch pads when a launch occurs
+
+playerLaunchParticleCountMultiplier is a scalar for the number of particles emmited by the player as they fly through the air
+
 
 <br>
 Each pad has it's own x, y, z, xpower, ypower, zpower attached to it. If you want to change the power of a single pad, go into the config file, and look for that pad. For convenience, you can CTRL+F for a pad by typing in its x, y, z coordinates with spaces in between. For example, if the pad has coordinates x=112, y=61, z=434, you can search for it in your config file by using CTRL+F and typing "112 61 434"
