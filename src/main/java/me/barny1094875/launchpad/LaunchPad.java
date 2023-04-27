@@ -32,15 +32,15 @@ public final class LaunchPad extends JavaPlugin {
         }
         // check for defaultXpower, defaultYpower, and defaultZpower
         if(config.getConfig().get("defaultXpower") == null){
-            config().getConfig().set("defaultXpower", 2);
+            config().getConfig().set("defaultXpower", 3);
             config.save();
         }
         if(config.getConfig().get("defaultYpower") == null){
-            config().getConfig().set("defaultYpower", 3);
+            config().getConfig().set("defaultYpower", 4);
             config.save();
         }
         if(config.getConfig().get("defaultZpower") == null){
-            config().getConfig().set("defaultZpower", 2);
+            config().getConfig().set("defaultZpower", 3);
             config.save();
         }
         // if this is the first time the plugin is run, set power values to defaults

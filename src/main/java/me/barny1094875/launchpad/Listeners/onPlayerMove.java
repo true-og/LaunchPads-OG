@@ -44,15 +44,15 @@ public class onPlayerMove implements Listener {
                                 // time = 1 tick
                                 double ySpeed = to.getY() - from.getY();
 
-                                // if the ySpeed is below a threshold of 0.2,
-                                // then set the ySpeed to 0.2 so that there is some y movement
-                                if(ySpeed < 0.2){
-                                    ySpeed = 0.2;
+                                // if the ySpeed is below a threshold of 0.15,
+                                // then set the ySpeed to 0.15 so that there is some y movement
+                                if(ySpeed < 0.15){
+                                    ySpeed = 0.15;
                                 }
 
-                                // add 0.2 to the ySpeed so that there is more movement,
+                                // add 0.25 to the ySpeed so that there is more movement,
                                 // without reducing the effect of a jump
-                                ySpeed += 0.2;
+                                ySpeed += 0.25;
 
                                 // if the player is crouching, reduce the velocity to 1/3
                                 if(player.isSneaking()){
@@ -70,23 +70,36 @@ public class onPlayerMove implements Listener {
                                 Vector directionVector = playerLocation.getDirection();
 
                                 FileConfiguration launchConfig = LaunchPad.config().getConfig();
+                                // get the xpower, ypower, and zpower
+                                int xPower = launchConfig.getInt(i + ".xpower");
+                                int yPower = launchConfig.getInt(i + ".ypower");
+                                int zPower = launchConfig.getInt(i + ".zpower");
 
                                 player.setVelocity(new Vector(
-                                /* x */  launchConfig.getInt(i + ".xpower") * directionVector.getX() * velocityMult,
-                                /* y */  ySpeed * launchConfig.getInt(i + ".ypower"),
-                                /* z */  launchConfig.getInt(i + ".zpower") * directionVector.getZ() * velocityMult));
+                                /* x */  xPower * directionVector.getX() * velocityMult,
+                                /* y */  yPower * ySpeed,
+                                /* z */  zPower * directionVector.getZ() * velocityMult));
 
-                                // player a wither sound pitched up by 2.0
+                                // player a wither shoot sound
                                 player.playSound(playerLocation, Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
                                 // spawn a particle at the launch pad
                                 Location padLocation = new Location(player.getWorld(),
-                                        launchConfig.getInt(i + ".x"),
+                                        launchConfig.getInt(i + ".x") + 0.5,
                                         launchConfig.getInt(i + ".y"),
-                                        launchConfig.getInt(i + ".z"));
-                                player.spawnParticle(Particle.SPELL, padLocation, 100);
-                                for(int j = 0; j < 20; j++){
+                                        launchConfig.getInt(i + ".z") + 0.5);
+//                                player.spawnParticle(Particle.SPELL, padLocation, 100);
+                                // dragons breath
+                                // firework rocket trail
+                                // copper wax on
+                                player.spawnParticle(Particle.FIREWORKS_SPARK, padLocation, 150, 0, 0, 0, 0.2);
+
+                                // spawn particles on the player as they fly through the air
+                                // This equation was gotten with a linear regression on different amounts of yPower
+                                // to find what the vertex of the player's jump is
+                                //                 \/ --------- \/
+                                for(int j = 0; j < yPower * 8 - 15; j++){
                                     Bukkit.getScheduler().runTaskLater(LaunchPad.getPlugin(), () -> {
-                                        player.spawnParticle(Particle.SPELL, player.getLocation(), 10);
+                                        player.spawnParticle(Particle.SPELL, player.getLocation(), xPower * zPower * 2);
                                     }, j);
                                 }
 

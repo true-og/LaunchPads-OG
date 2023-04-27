@@ -1,5 +1,5 @@
 name: LaunchPad
-version: '${version}'
+version: '1.1'
 main: me.barny1094875.launchpad.LaunchPad
 api-version: 1.18
 commands:
@@ -13,4 +13,6 @@ permissions:
   launchpad.cangive:
     default: op
   launchpad.canreload:
+    default: op
+  launchpad.canset:
     default: op
