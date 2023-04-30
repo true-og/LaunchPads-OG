@@ -1,9 +1,6 @@
 package me.barny1094875.launchpad;
 
-import me.barny1094875.launchpad.Commands.givePad;
 import me.barny1094875.launchpad.Commands.launchPadCommands;
-import me.barny1094875.launchpad.Commands.reloadPadConfig;
-import me.barny1094875.launchpad.Commands.setPad;
 import me.barny1094875.launchpad.Listeners.onBlockBreak;
 import me.barny1094875.launchpad.Listeners.onBlockPlace;
 import me.barny1094875.launchpad.Listeners.onPlayerMove;
@@ -19,13 +16,10 @@ public final class LaunchPad extends JavaPlugin {
 
     private static LaunchPad plugin;
     private static Config config;
-//    private static Config padCoords;
 
     @Override
     public void onEnable() {
         plugin = this;
-        // Plugin startup logic
-
 
         // config stuff
         config = new Config(this, this.getDataFolder(), "config", true, false);
@@ -102,15 +96,12 @@ public final class LaunchPad extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new onPlayerMove(), this);
         getServer().getPluginManager().registerEvents(new onBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new onBlockPlace(), this);
-//        getCommand("givepad").setExecutor(new givePad());
-//        getCommand("reloadpadconfig").setExecutor(new reloadPadConfig());
         getCommand("launchpad").setExecutor(new launchPadCommands());
 
         // make all launchpads emit particles when not in use
         // to signify that they are launchpads
         Bukkit.getScheduler().runTaskTimer(this, () -> {
             for(int i = 1; i < config.getConfig().getInt("numberOfPads") + 1; i++){
-
 
                 String worldName = config.getConfig().getString(i + ".world");
                 World world = Bukkit.getWorld(worldName);
@@ -134,10 +125,6 @@ public final class LaunchPad extends JavaPlugin {
     public static LaunchPad getPlugin(){
         return plugin;
     }
-
-//    public static Config getPadCoords(){
-//        return padCoords;
-//    }
 
     public static Config config(){
         return config;
