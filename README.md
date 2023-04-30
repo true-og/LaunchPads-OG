@@ -7,7 +7,7 @@ Authors: Barny1094875.
 
 <h3>To build:</h3>
 
-./gradlew build
+/gradlew build
 
 The resulting .jar file will be in build/libs
 
