@@ -14,15 +14,21 @@ The resulting .jar file will be in build/libs
 
 
 <h3>How to use:</h3>
-Use /givepad to give yourself a launch pad item. When placed down, a launchpad will be created there with the default x,y,z powers in the config file. This command requires the cangive permission. This will require a server restart to take effect.
+Use /launchpad givepad to give yourself a launch pad item. When placed down, a launchpad will be created there with the default x,y,z powers in the config file. This command requires the cangive permission. This will require a server restart to take effect.
 
-Use /setpad to create a pad where you are standing with the default x,y,z powers set in the config file. This requires the canset permision.
+Use /launchpad setpad to create a pad where you are standing with the default x,y,z powers set in the config file. This requires the canset permision.
 
-Use /setpad <xpower> <ypower> <zpower> to create a pad where you are standing with the x,y,z powers provided. This requires the canset permision.
+Use /launchpad setpad <xpower> <ypower> <zpower> to create a pad where you are standing with the x,y,z powers provided. This requires the canset permision.
 
-Use /setpad <x> <y> <z> <xpower> <ypower> <zpower> to create a pad at the specified x,y,z coordinates with the specified x,y,z powers. This requires the canset permision.
+Use /launchpad setpad <x> <y> <z> <xpower> <ypower> <zpower> to create a pad at the specified x,y,z coordinates with the specified x,y,z powers. This requires the canset permision.
 
-To remove a launch pad, either break the pad or place a block in it's place and break that block.
+Use /launchpad delpad to remove the pad at the block you are pointing at. This requires the candelete permission.
+
+Use /launchpad delpad <x> <y> <z> to delete the pad at the specified coordinates in the world you are standing in. This requires the candelete permission.
+
+Use /launchpad delpad <world> <x> <y> <z> to delete the pad at the specified coordinates in the specified world. For world, enter any of: end, nether, overworld, world, world_nether, world_the_end. This requires the candelete permission.
+
+Launchpads can also be removed by placing a block in their location and breaking it. This requires either cancraft to be set to true, or the player to have the canbreak permission.
 
 <h3>Crafting Recipes</h3>
 The launch pad can be crafted if cancraft is set to true in the config. The crafting recipes are as follows:
