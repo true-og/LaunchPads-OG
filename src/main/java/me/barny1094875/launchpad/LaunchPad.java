@@ -1,6 +1,7 @@
 package me.barny1094875.launchpad;
 
 import me.barny1094875.launchpad.Commands.givePad;
+import me.barny1094875.launchpad.Commands.launchPadCommands;
 import me.barny1094875.launchpad.Commands.reloadPadConfig;
 import me.barny1094875.launchpad.Commands.setPad;
 import me.barny1094875.launchpad.Listeners.onBlockBreak;
@@ -54,16 +55,16 @@ public final class LaunchPad extends JavaPlugin {
         }
         // check for ambientParticleCount and ambientParticlePower
         if(config.getConfig().get("idleParticleCount") == null){
-            config.getConfig().set("idleParticleCount", 3);
+            config.getConfig().set("idleParticleCount", 4);
             config.save();
         }
         if(config.getConfig().get("idleParticlePower") == null){
-            config.getConfig().set("idleParticlePower", 1.0);
+            config.getConfig().set("idleParticlePower", 1.5);
             config.save();
         }
         // check for padLaunchParticleCount and padLaunchParticlePower
         if(config.getConfig().get("padLaunchParticleCount") == null){
-            config.getConfig().set("padLaunchParticleCount", 100);
+            config.getConfig().set("padLaunchParticleCount", 80);
             config.save();
         }
         if(config.getConfig().get("padLaunchParticlePower") == null){
@@ -101,9 +102,9 @@ public final class LaunchPad extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new onPlayerMove(), this);
         getServer().getPluginManager().registerEvents(new onBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new onBlockPlace(), this);
-        getCommand("givepad").setExecutor(new givePad());
-        getCommand("reloadpadconfig").setExecutor(new reloadPadConfig());
-        getCommand("setpad").setExecutor(new setPad());
+//        getCommand("givepad").setExecutor(new givePad());
+//        getCommand("reloadpadconfig").setExecutor(new reloadPadConfig());
+        getCommand("launchpad").setExecutor(new launchPadCommands());
 
         // make all launchpads emit particles when not in use
         // to signify that they are launchpads

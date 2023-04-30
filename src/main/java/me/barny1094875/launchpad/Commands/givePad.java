@@ -21,8 +21,8 @@ public class givePad implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
         if(command.getName().equalsIgnoreCase("givepad")) {
-            // if it's just /givepad
-            if (args.length == 0) {
+            // if it's just /launchpad givepad
+            if (args.length == 1) {
                 Player player = null;
                 if (sender instanceof Player) {
                     player = (Player) sender;
