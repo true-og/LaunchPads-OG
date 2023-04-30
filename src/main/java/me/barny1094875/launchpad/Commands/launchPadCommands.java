@@ -397,7 +397,7 @@ public class launchPadCommands implements CommandExecutor {
                                                 // let the player know that the launchpad was removed
                                                 sender.sendMessage(Component.text("[LaunchPad]")
                                                         .color(TextColor.color(0, 255, 0))
-                                                        .append(Component.text(" Launch Pad Removed at: " + padX + ", " + padY + ", " + padZ)
+                                                        .append(Component.text(" Launch Pad Removed From: " + padX + ", " + padY + ", " + padZ)
                                                                 .color(TextColor.color(255, 255, 0))));
 
                                             }
@@ -450,7 +450,7 @@ public class launchPadCommands implements CommandExecutor {
                                                 // let the player know that the launchpad was removed
                                                 sender.sendMessage(Component.text("[LaunchPad]")
                                                         .color(TextColor.color(0, 255, 0))
-                                                        .append(Component.text(" Launch Pad Removed at: " + blockX + ", " + blockY + ", " + blockZ)
+                                                        .append(Component.text(" Launch Pad Removed From: " + blockX + ", " + blockY + ", " + blockZ)
                                                                 .color(TextColor.color(255, 255, 0))));
                                             }
                                         }
@@ -518,7 +518,7 @@ public class launchPadCommands implements CommandExecutor {
                                                 // let the player know that the launchpad was removed
                                                 sender.sendMessage(Component.text("[LaunchPad]")
                                                         .color(TextColor.color(0, 255, 0))
-                                                        .append(Component.text(" Launch Pad Removed from: " + blockX + ", " + blockY + ", " + blockZ)
+                                                        .append(Component.text(" Launch Pad Removed From: " + blockX + ", " + blockY + ", " + blockZ)
                                                                 .color(TextColor.color(255, 255, 0))));
                                             }
                                         }
