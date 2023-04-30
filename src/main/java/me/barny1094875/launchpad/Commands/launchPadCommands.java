@@ -40,7 +40,7 @@ public class launchPadCommands implements CommandExecutor {
 
 
                 // if the command is /launchpad setpad
-                if (args[0].equalsIgnoreCase("setpad")) {
+                if (args[0].equalsIgnoreCase("set")) {
                     if (sender.hasPermission("launchpad.canset")) {
                         // if the command is just /launchpad setpad
                         // set a new pad to the player's location
@@ -294,7 +294,7 @@ public class launchPadCommands implements CommandExecutor {
 
 
                 // if the command is /launchpad givepad
-                else if (args[0].equalsIgnoreCase("givepad")) {
+                else if (args[0].equalsIgnoreCase("give")) {
                     // if it's just /givepad
                     if (args.length == 1) {
 
@@ -343,7 +343,7 @@ public class launchPadCommands implements CommandExecutor {
 
 
                 // if the command is /launchpad delpad
-                else if (args[0].equalsIgnoreCase("delpad")) {
+                else if (args[0].equalsIgnoreCase("delete")) {
                     if (player.hasPermission("launchpad.candelete")) {
                         // if it's just /launchpad delpad
                         if (args.length == 1) {
