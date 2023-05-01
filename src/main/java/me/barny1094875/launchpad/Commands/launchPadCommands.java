@@ -297,7 +297,6 @@ public class launchPadCommands implements CommandExecutor {
                 else if (args[0].equalsIgnoreCase("give")) {
                     // if it's just /givepad
                     if (args.length == 1) {
-
                         if (player.hasPermission("launchpad.cangive")) {
 
                             // create the launchpad item

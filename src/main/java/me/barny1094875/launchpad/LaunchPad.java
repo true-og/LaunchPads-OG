@@ -1,5 +1,6 @@
 package me.barny1094875.launchpad;
 
+import me.barny1094875.launchpad.Commands.launchPadCommandCompleter;
 import me.barny1094875.launchpad.Commands.launchPadCommands;
 import me.barny1094875.launchpad.Listeners.onBlockBreak;
 import me.barny1094875.launchpad.Listeners.onBlockPlace;
@@ -97,6 +98,7 @@ public final class LaunchPad extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new onBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new onBlockPlace(), this);
         getCommand("launchpad").setExecutor(new launchPadCommands());
+        getCommand("launchpad").setTabCompleter(new launchPadCommandCompleter());
 
         // make all launchpads emit particles when not in use
         // to signify that they are launchpads
