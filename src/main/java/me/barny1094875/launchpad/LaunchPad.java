@@ -1,22 +1,30 @@
 package me.barny1094875.launchpad;
 
-import me.barny1094875.launchpad.Commands.launchPadCommandCompleter;
-import me.barny1094875.launchpad.Commands.launchPadCommands;
-import me.barny1094875.launchpad.Listeners.onBlockBreak;
-import me.barny1094875.launchpad.Listeners.onBlockPlace;
-import me.barny1094875.launchpad.Listeners.onPlayerMove;
+import me.barny1094875.launchpad.Commands.LaunchPadCommandCompleter;
+import me.barny1094875.launchpad.Commands.LaunchPadCommands;
+import me.barny1094875.launchpad.Listeners.OnBlockBreak;
+import me.barny1094875.launchpad.Listeners.OnBlockPlace;
+import me.barny1094875.launchpad.Listeners.OnEntityDamage;
+import me.barny1094875.launchpad.Listeners.OnPlayerMove;
 import me.barny1094875.launchpad.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
 
 
 public final class LaunchPad extends JavaPlugin {
 
     private static LaunchPad plugin;
     private static Config config;
+
+    // this list will hold the players that have used a launchpad and are flying through the air
+    // then, when they land, I remove them from the list, and stop them from taking fall damage
+    private static ArrayList<Player> launchedPlayers = new ArrayList<Player>();
 
     @Override
     public void onEnable() {
@@ -94,11 +102,12 @@ public final class LaunchPad extends JavaPlugin {
             Recipes.addLaunchPad();
         }
 
-        getServer().getPluginManager().registerEvents(new onPlayerMove(), this);
-        getServer().getPluginManager().registerEvents(new onBlockBreak(), this);
-        getServer().getPluginManager().registerEvents(new onBlockPlace(), this);
-        getCommand("launchpad").setExecutor(new launchPadCommands());
-        getCommand("launchpad").setTabCompleter(new launchPadCommandCompleter());
+        getServer().getPluginManager().registerEvents(new OnPlayerMove(), this);
+        getServer().getPluginManager().registerEvents(new OnBlockBreak(), this);
+        getServer().getPluginManager().registerEvents(new OnBlockPlace(), this);
+        getServer().getPluginManager().registerEvents(new OnEntityDamage(), this);
+        getCommand("launchpad").setExecutor(new LaunchPadCommands());
+        getCommand("launchpad").setTabCompleter(new LaunchPadCommandCompleter());
 
         // make all launchpads emit particles when not in use
         // to signify that they are launchpads
@@ -130,5 +139,9 @@ public final class LaunchPad extends JavaPlugin {
 
     public static Config config(){
         return config;
+    }
+
+    public static ArrayList<Player> getLaunchedPlayers(){
+        return launchedPlayers;
     }
 }

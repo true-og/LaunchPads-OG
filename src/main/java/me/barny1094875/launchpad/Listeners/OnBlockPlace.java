@@ -5,16 +5,14 @@ import me.barny1094875.launchpad.config.Config;
 import net.kyori.adventure.text.Component;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Collections;
 import java.util.Vector;
 
-public class onBlockPlace implements Listener {
+public class OnBlockPlace implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event){
@@ -36,9 +34,9 @@ public class onBlockPlace implements Listener {
                 padCoords.set(padNumber + ".x", block.getX());
                 padCoords.set(padNumber + ".y", block.getY());
                 padCoords.set(padNumber + ".z", block.getZ());
-                padCoords.set(padNumber + ".xpower", padCoords.getInt("defaultXpower"));
-                padCoords.set(padNumber + ".ypower", padCoords.getInt("defaultYpower"));
-                padCoords.set(padNumber + ".zpower", padCoords.getInt("defaultZpower"));
+                padCoords.set(padNumber + ".xpower", padCoords.getDouble("defaultXpower"));
+                padCoords.set(padNumber + ".ypower", padCoords.getDouble("defaultYpower"));
+                padCoords.set(padNumber + ".zpower", padCoords.getDouble("defaultZpower"));
                 // this makes it easier to search the config file
                 // use CTRL+F and search for the coords of the pad
                 padCoords.set(padNumber + ".searchID", block.getX() + " " + block.getY() + " " + block.getZ());

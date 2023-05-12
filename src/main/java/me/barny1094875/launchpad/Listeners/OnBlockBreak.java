@@ -19,7 +19,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Collections;
 import java.util.Vector;
 
-public class onBlockBreak implements Listener {
+public class OnBlockBreak implements Listener {
 
     // check to see if the block broken was a launch pad
     // if so, remove the launch pad from the config list

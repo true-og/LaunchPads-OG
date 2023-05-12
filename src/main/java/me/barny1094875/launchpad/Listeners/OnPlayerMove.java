@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,7 +14,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
 
-public class onPlayerMove implements Listener {
+public class OnPlayerMove implements Listener {
 
     @EventHandler
     public void onPlayerMoveEvent(PlayerMoveEvent event){
@@ -103,10 +104,36 @@ public class onPlayerMove implements Listener {
                                     }, j);
                                 }
 
+                                // add the player to the launchedPlayers list
+                                // 1 tick later so that the player is off the ground
+                                // and isn't removed immediately
+                                Bukkit.getScheduler().runTaskLater(LaunchPad.getPlugin(), () -> {
+                                    LaunchPad.getLaunchedPlayers().add(player);
+                                }, 1);
+
                             }
                         }
                     }
                 }
+            }
+        }
+
+
+
+        // check to see if the player touched the ground
+        // if they have, set their fall distance to 4 so that
+        // OnEntityDamage will work to stop their fall damage
+        // and remove them from the list
+        Player player = event.getPlayer();
+        Location playerLocation = player.getLocation();
+        Block checkBlock = playerLocation.subtract(0, 0.1, 0).getBlock();
+        // check if the player is on the ground
+        // this is a method that I found here: https://www.spigotmc.org/threads/how-can-i-get-if-a-player-on-ground-or-not.150092/
+        if(!player.isFlying() && checkBlock.getType().isSolid()){
+            // check if the player is in the launchedPlayers list
+            if(LaunchPad.getLaunchedPlayers().contains(player)) {
+                // set the player's fall distance to 4
+                player.setFallDistance(4.0f);
             }
         }
     }

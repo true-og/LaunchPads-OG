@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collections;
 import java.util.Vector;
 
-public class launchPadCommands implements CommandExecutor {
+public class LaunchPadCommands implements CommandExecutor {
 
 
     @Override
@@ -75,9 +75,9 @@ public class launchPadCommands implements CommandExecutor {
                             padCoords.set(padNumber + ".x", playerX);
                             padCoords.set(padNumber + ".y", playerY);
                             padCoords.set(padNumber + ".z", playerZ);
-                            padCoords.set(padNumber + ".xpower", padCoords.getInt("defaultXpower"));
-                            padCoords.set(padNumber + ".ypower", padCoords.getInt("defaultYpower"));
-                            padCoords.set(padNumber + ".zpower", padCoords.getInt("defaultZpower"));
+                            padCoords.set(padNumber + ".xpower", padCoords.getDouble("defaultXpower"));
+                            padCoords.set(padNumber + ".ypower", padCoords.getDouble("defaultYpower"));
+                            padCoords.set(padNumber + ".zpower", padCoords.getDouble("defaultZpower"));
                             // this makes it easier to search the config file
                             // use CTRL+F and search for the coords of the pad
                             padCoords.set(padNumber + ".searchID", playerX + " " + playerY + " " + playerZ);
@@ -104,9 +104,9 @@ public class launchPadCommands implements CommandExecutor {
                             int playerX = playerLocation.getBlockX();
                             int playerY = playerLocation.getBlockY();
                             int playerZ = playerLocation.getBlockZ();
-                            int padXPower = Integer.parseInt(args[1]);
-                            int padYPower = Integer.parseInt(args[2]);
-                            int padZPower = Integer.parseInt(args[3]);
+                            double padXPower = Double.parseDouble(args[1]);
+                            double padYPower = Double.parseDouble(args[2]);
+                            double padZPower = Double.parseDouble(args[3]);
 
                             // check if there is already a pad in that location
                             for (int i = 1; i < numberOfPads + 1; i++) {
@@ -163,9 +163,9 @@ public class launchPadCommands implements CommandExecutor {
                             int padX = Integer.parseInt(args[1]);
                             int padY = Integer.parseInt(args[2]);
                             int padZ = Integer.parseInt(args[3]);
-                            int padXPower = Integer.parseInt(args[4]);
-                            int padYPower = Integer.parseInt(args[5]);
-                            int padZPower = Integer.parseInt(args[6]);
+                            double padXPower = Double.parseDouble(args[4]);
+                            double padYPower = Double.parseDouble(args[5]);
+                            double padZPower = Double.parseDouble(args[6]);
 
                             // check if there is already a pad in that location
                             for (int i = 1; i < numberOfPads + 1; i++) {
@@ -229,14 +229,15 @@ public class launchPadCommands implements CommandExecutor {
                 // if the command is /launchpad reloadconfig
                 else if (args[0].equalsIgnoreCase("reloadconfig")) {
                     if (sender.hasPermission("launchpad.canreload")) {
-                        LaunchPad.config().reloadConfig();
+                        padCoords = padConfig.reloadConfig();
                         // check through the config to make sure that
                         // there are as many launchpads as numberOfPads
                         // if there is not, move all of the pad number down
                         // by one starting at the missing number
 
-                        if (numberOfPads != 1) {
-                            for (int i = 1; i < numberOfPads; i++) {
+                        int maxNumberOfPads = numberOfPads + 1;
+                        if (numberOfPads > 1) {
+                            for (int i = 1; i < maxNumberOfPads; i++) {
                                 // if the world is null, then the pad is not set
                                 if (padCoords.getString(i + ".world") == null) {
                                     // move all other pads up one id number
@@ -254,23 +255,27 @@ public class launchPadCommands implements CommandExecutor {
                                     }
                                     padCoords.set("" + numberOfPads, null);
                                     padCoords.set("numberOfPads", --numberOfPads);
-                                    padConfig.save();
                                 }
                             }
                             // check if the last pad exists
                             if (padCoords.getString(numberOfPads + ".world") == null) {
                                 // decrement numberOfPads by one
                                 padCoords.set("numberOfPads", --numberOfPads);
-                                padConfig.save();
                             }
-                        } else {
+                        }
+                        else {
                             // if numberOfPads is 1, then there can only be one pad
-                            // check if it exists. If not, decrement numberOfPads
-                            System.out.println("checking");
+                            // check if it exists. If not, set numberOfPads to 0
                             if (padCoords.getString("1.world") == null) {
                                 padCoords.set("numberOfPads", 0);
-                                padConfig.save();
+
                             }
+                        }
+
+                        // check if numberOfPads is below 0
+                        // if so, set it to 0
+                        if(padCoords.getInt("numberOfPads") < 0){
+                            padCoords.set("numberOfPads", 0);
                         }
 
                         // tell the player that ran the command that they plugin config has been reloaded
@@ -278,6 +283,11 @@ public class launchPadCommands implements CommandExecutor {
                                 .color(TextColor.color(0, 255, 0))
                                 .append(Component.text(" Config Reloaded")
                                         .color(TextColor.color(255, 255, 0))));
+
+
+                        // save and reload the config
+                        padConfig.save();
+                        padConfig.reload();
                     }
                     // if the player doesn't have permission to use this command,
                     // let them know
@@ -543,6 +553,24 @@ public class launchPadCommands implements CommandExecutor {
                                 .append(Component.text(" You Don't Have Permission to do That!")
                                         .color(TextColor.color(255, 0, 0))));
                     }
+                }
+
+
+
+
+
+
+                // the player did not input an acceptable second argument
+                else{
+                    // tell the player that that command doesn't exist
+                    sender.sendMessage(Component.text("[LaunchPad]")
+                            .color(TextColor.color(0, 255, 0))
+                            .append(Component.text(" Command ")
+                                    .color(TextColor.color(255, 0, 0)))
+                            .append(Component.text("/" + command.getName() + " " + args[0])
+                                .color(TextColor.color(255, 75, 75)))
+                            .append(Component.text(" does not exist")
+                                .color(TextColor.color(255, 0, 0))));
                 }
             }
 
