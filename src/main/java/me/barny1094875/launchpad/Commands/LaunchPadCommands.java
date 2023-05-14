@@ -232,7 +232,7 @@ public class LaunchPadCommands implements CommandExecutor {
                         FileConfiguration oldPadCoords = padCoords;
                         padCoords = padConfig.reloadConfig();
 
-                        // check that everything has what it is supposed to have
+                        /* check that everything has what it is supposed to have */
 
                         // check that numberOfPads is an integer
                         if(!(padCoords.get("numberOfPads") instanceof Integer)){
@@ -241,6 +241,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                     .color(TextColor.color(0, 255, 0))
                                     .append(Component.text(" numberOfPads has to be an integer")
                                             .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
                             padConfig.config = oldPadCoords;
                             return true;
                         }
@@ -251,6 +252,99 @@ public class LaunchPadCommands implements CommandExecutor {
                                     .color(TextColor.color(0, 255, 0))
                                     .append(Component.text(" numberOfPads has to be greater than or equal to 0")
                                             .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+
+                        // check that the default pad powers are doubles
+                        if(!(padCoords.get("defaultXpower") instanceof Double)){
+                            // tell the player that the defaultXpower needs to be an double
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" defaultXpower must be an double")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+                        if(!(padCoords.get("defaultYpower") instanceof Double)){
+                            // tell the player that the defaultYpower needs to be an double
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" defaultYpower must be an double")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+                        if(!(padCoords.get("defaultZpower") instanceof Double)){
+                            // tell the player that the defaultZpower needs to be an double
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" defaultZpower must be an double")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+
+                        // check that idleParticleCount is an integer
+                        if(!(padCoords.get("idleParticleCount") instanceof Integer)){
+                            // tell the player that the idleParticleCount needs to be an integer
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" idleParticleCount must be an integer")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+
+                        // check that idleParticlePower is a double
+                        if(!(padCoords.get("idleParticlePower") instanceof Double)){
+                            // tell the player that the idleParticlePower needs to be an double
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" idleParticlePower must be an double")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+
+                        // check that padLaunchParticleCount is an integer
+                        if(!(padCoords.get("padLaunchParticleCount") instanceof Integer)){
+                            // tell the player that the padLaunchParticleCount needs to be an integer
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" padLaunchParticleCount must be an integer")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+
+                        // check that padLaunchParticlePower is a double
+                        if(!(padCoords.get("padLaunchParticlePower") instanceof Double)){
+                            // tell the player that the padLaunchParticlePower needs to be an double
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" padLaunchParticlePower must be an double")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+
+                        // check that playerLaunchParticleCountMultipier is a double
+                        if(!(padCoords.get("playerLaunchParticleCountMultipier") instanceof Double)){
+                            // tell the player that the playerLaunchParticleCountMultipier needs to be an double
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" playerLaunchParticleCountMultipier must be an double")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
                             padConfig.config = oldPadCoords;
                             return true;
                         }
@@ -270,6 +364,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                             .append(Component.text(" world of pad ID " + i + " must be either " +
                                                             "\"world\", \"world_nether\", or \"world_the_end\" ")
                                                     .color(TextColor.color(255, 0, 0))));
+                                    // reset padConfig to the pre-reload config
                                     padConfig.config = oldPadCoords;
                                     return true;
                                 }
@@ -280,6 +375,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                         .color(TextColor.color(0, 255, 0))
                                         .append(Component.text(" world of pad ID " + i + " must be a string")
                                                 .color(TextColor.color(255, 0, 0))));
+                                // reset padConfig to the pre-reload config
                                 padConfig.config = oldPadCoords;
                                 return true;
                             }
@@ -291,6 +387,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                         .color(TextColor.color(0, 255, 0))
                                         .append(Component.text(" x of pad ID " + i + " must be an integer")
                                                 .color(TextColor.color(255, 0, 0))));
+                                // reset padConfig to the pre-reload config
                                 padConfig.config = oldPadCoords;
                                 return true;
                             }
@@ -300,6 +397,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                         .color(TextColor.color(0, 255, 0))
                                         .append(Component.text(" y of pad ID \" + i + \" must be an integer")
                                                 .color(TextColor.color(255, 0, 0))));
+                                // reset padConfig to the pre-reload config
                                 padConfig.config = oldPadCoords;
                                 return true;
                             }
@@ -309,6 +407,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                         .color(TextColor.color(0, 255, 0))
                                         .append(Component.text(" z of pad ID \" + i + \" must be an integer")
                                                 .color(TextColor.color(255, 0, 0))));
+                                // reset padConfig to the pre-reload config
                                 padConfig.config = oldPadCoords;
                                 return true;
                             }
@@ -321,6 +420,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                         .color(TextColor.color(0, 255, 0))
                                         .append(Component.text(" xpower of pad ID " + i + " must be an double")
                                                 .color(TextColor.color(255, 0, 0))));
+                                // reset padConfig to the pre-reload config
                                 padConfig.config = oldPadCoords;
                                 return true;
                             }
@@ -330,6 +430,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                         .color(TextColor.color(0, 255, 0))
                                         .append(Component.text(" ypower of pad ID \" + i + \" must be an double")
                                                 .color(TextColor.color(255, 0, 0))));
+                                // reset padConfig to the pre-reload config
                                 padConfig.config = oldPadCoords;
                                 return true;
                             }
@@ -339,10 +440,14 @@ public class LaunchPadCommands implements CommandExecutor {
                                         .color(TextColor.color(0, 255, 0))
                                         .append(Component.text(" zpower of pad ID \" + i + \" must be an double")
                                                 .color(TextColor.color(255, 0, 0))));
+                                // reset padConfig to the pre-reload config
                                 padConfig.config = oldPadCoords;
                                 return true;
                             }
                         }
+
+
+
 
 
 

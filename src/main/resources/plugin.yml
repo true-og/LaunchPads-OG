@@ -1,5 +1,5 @@
 name: LaunchPad-OG
-version: '1.3'
+version: '1.4'
 main: me.barny1094875.launchpad.LaunchPad
 api-version: 1.18
 commands:

@@ -85,7 +85,7 @@ public final class LaunchPad extends JavaPlugin {
 
 
         // if the launchpad is craftable, add the recipe to the server
-        if((boolean) this.config.getConfig().get("cancraft")) {
+        if((boolean) config.getConfig().get("cancraft")) {
             // create the recipe for the launchpad
             // make it really expensive by locking it
             // behind many other crafting items
