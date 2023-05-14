@@ -1,10 +1,7 @@
 package me.barny1094875.launchpad.Listeners;
 
 import me.barny1094875.launchpad.LaunchPad;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -108,7 +105,10 @@ public class OnPlayerMove implements Listener {
                                 // 1 tick later so that the player is off the ground
                                 // and isn't removed immediately
                                 Bukkit.getScheduler().runTaskLater(LaunchPad.getPlugin(), () -> {
-                                    LaunchPad.getLaunchedPlayers().add(player);
+                                    // check if the player is in survival. Otherwise, don't add them
+                                    if(player.getGameMode().equals(GameMode.SURVIVAL)) {
+                                        LaunchPad.getLaunchedPlayers().add(player);
+                                    }
                                 }, 1);
 
                             }
