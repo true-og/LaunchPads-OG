@@ -257,32 +257,44 @@ public class LaunchPadCommands implements CommandExecutor {
                             return true;
                         }
 
-                        // check that the default pad powers are doubles
-                        if(!(padCoords.get("defaultXpower") instanceof Double)){
-                            // tell the player that the defaultXpower needs to be an double
+                        // check that cancraft is a boolean
+                        if(!(padCoords.get("cancraft") instanceof Boolean)){
+                            // tell the player that the cancraft needs to be an boolean
                             sender.sendMessage(Component.text("[LaunchPad]")
                                     .color(TextColor.color(0, 255, 0))
-                                    .append(Component.text(" defaultXpower must be an double")
+                                    .append(Component.text(" cancraft must be a boolean")
+                                            .color(TextColor.color(255, 0, 0))));
+                            // reset padConfig to the pre-reload config
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+
+                        // check that the default pad powers are doubles
+                        if(!(padCoords.get("defaultXpower") instanceof Double)){
+                            // tell the player that the defaultXpower needs to be a double
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" defaultXpower must be a double")
                                             .color(TextColor.color(255, 0, 0))));
                             // reset padConfig to the pre-reload config
                             padConfig.config = oldPadCoords;
                             return true;
                         }
                         if(!(padCoords.get("defaultYpower") instanceof Double)){
-                            // tell the player that the defaultYpower needs to be an double
+                            // tell the player that the defaultYpower needs to be a double
                             sender.sendMessage(Component.text("[LaunchPad]")
                                     .color(TextColor.color(0, 255, 0))
-                                    .append(Component.text(" defaultYpower must be an double")
+                                    .append(Component.text(" defaultYpower must be a double")
                                             .color(TextColor.color(255, 0, 0))));
                             // reset padConfig to the pre-reload config
                             padConfig.config = oldPadCoords;
                             return true;
                         }
                         if(!(padCoords.get("defaultZpower") instanceof Double)){
-                            // tell the player that the defaultZpower needs to be an double
+                            // tell the player that the defaultZpower needs to be a double
                             sender.sendMessage(Component.text("[LaunchPad]")
                                     .color(TextColor.color(0, 255, 0))
-                                    .append(Component.text(" defaultZpower must be an double")
+                                    .append(Component.text(" defaultZpower must be a double")
                                             .color(TextColor.color(255, 0, 0))));
                             // reset padConfig to the pre-reload config
                             padConfig.config = oldPadCoords;
@@ -303,10 +315,10 @@ public class LaunchPadCommands implements CommandExecutor {
 
                         // check that idleParticlePower is a double
                         if(!(padCoords.get("idleParticlePower") instanceof Double)){
-                            // tell the player that the idleParticlePower needs to be an double
+                            // tell the player that the idleParticlePower needs to be a double
                             sender.sendMessage(Component.text("[LaunchPad]")
                                     .color(TextColor.color(0, 255, 0))
-                                    .append(Component.text(" idleParticlePower must be an double")
+                                    .append(Component.text(" idleParticlePower must be a double")
                                             .color(TextColor.color(255, 0, 0))));
                             // reset padConfig to the pre-reload config
                             padConfig.config = oldPadCoords;
@@ -327,10 +339,10 @@ public class LaunchPadCommands implements CommandExecutor {
 
                         // check that padLaunchParticlePower is a double
                         if(!(padCoords.get("padLaunchParticlePower") instanceof Double)){
-                            // tell the player that the padLaunchParticlePower needs to be an double
+                            // tell the player that the padLaunchParticlePower needs to be a double
                             sender.sendMessage(Component.text("[LaunchPad]")
                                     .color(TextColor.color(0, 255, 0))
-                                    .append(Component.text(" padLaunchParticlePower must be an double")
+                                    .append(Component.text(" padLaunchParticlePower must be a double")
                                             .color(TextColor.color(255, 0, 0))));
                             // reset padConfig to the pre-reload config
                             padConfig.config = oldPadCoords;
@@ -339,10 +351,10 @@ public class LaunchPadCommands implements CommandExecutor {
 
                         // check that playerLaunchParticleCountMultipier is a double
                         if(!(padCoords.get("playerLaunchParticleCountMultipier") instanceof Double)){
-                            // tell the player that the playerLaunchParticleCountMultipier needs to be an double
+                            // tell the player that the playerLaunchParticleCountMultipier needs to be a double
                             sender.sendMessage(Component.text("[LaunchPad]")
                                     .color(TextColor.color(0, 255, 0))
-                                    .append(Component.text(" playerLaunchParticleCountMultipier must be an double")
+                                    .append(Component.text(" playerLaunchParticleCountMultipier must be a double")
                                             .color(TextColor.color(255, 0, 0))));
                             // reset padConfig to the pre-reload config
                             padConfig.config = oldPadCoords;
