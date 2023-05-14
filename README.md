@@ -73,4 +73,4 @@ Each pad has it's own x, y, z, xpower, ypower, zpower attached to it. If you wan
 
 Once you have found your pad, you can change the xpower, ypower, and zpower to change how far the pad will launch you.
 
-When your changes have been made, you will need to run the command /launchpad reloadconfig. This command will update the config with your changes. This command requires the canreload permission.
+When your changes have been made, you will need to run the command /launchpad reloadconfig. This command will update the config with your changes. While updating, it will check that nothing is wrong with the config, and tell you what is wrong if there is something wrong. This command requires the canreload permission.
