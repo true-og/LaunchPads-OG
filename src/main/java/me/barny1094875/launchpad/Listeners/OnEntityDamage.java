@@ -1,12 +1,13 @@
 package me.barny1094875.launchpad.Listeners;
 
 import me.barny1094875.launchpad.LaunchPad;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 
@@ -21,9 +22,10 @@ public class OnEntityDamage implements Listener {
             if(event.getEntity() instanceof Player) {
                 // check the entity was in the launchedPlayers list
                 ArrayList<Player> launchedList = LaunchPad.getLaunchedPlayers();
-                Entity eventPlayer = (Player) event.getEntity();
+                Player eventPlayer = (Player) event.getEntity();
                 if (launchedList.contains(eventPlayer)) {
-                    event.setCancelled(true);
+//                    event.setCancelled(true);
+                    event.setDamage(0.0);
                     launchedList.remove(eventPlayer);
                 }
             }
