@@ -94,10 +94,12 @@ public class OnPlayerMove implements Listener {
                                 // spawn particles on the player as they fly through the air
                                 // This equation was gotten with a linear regression on different amounts of yPower
                                 // to find what the vertex of the player's jump is
+                                // maxes out at 25 ticks
                                 //                 \/ --------- \/
-                                for(int j = 0; j < yPower * 8 - 15; j++){
+                                for(int j = 0; j < Math.min(yPower * 8 - 15, 25); j++){
                                     Bukkit.getScheduler().runTaskLater(LaunchPad.getPlugin(), () -> {
-                                        player.spawnParticle(Particle.SPELL, player.getLocation(), (int) (xPower * zPower * playerParticleMult));
+                                        // max out the number of particles at 50
+                                        player.spawnParticle(Particle.SPELL, player.getLocation(), (int) Math.min(xPower * zPower * playerParticleMult, 50));
                                     }, j);
                                 }
 
