@@ -99,7 +99,7 @@ public class OnPlayerMove implements Listener {
                                 for(int j = 0; j < Math.min(yPower * 8 - 15, 25); j++){
                                     Bukkit.getScheduler().runTaskLater(LaunchPad.getPlugin(), () -> {
                                         // max out the number of particles at 50
-                                        player.spawnParticle(Particle.SPELL, player.getLocation(), (int) Math.min(xPower * zPower * playerParticleMult, 50));
+                                        player.getWorld().spawnParticle(Particle.SPELL, player.getLocation(), (int) Math.min(xPower * zPower * playerParticleMult, 50));
                                     }, j);
                                 }
 

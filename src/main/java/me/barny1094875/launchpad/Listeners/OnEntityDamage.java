@@ -1,6 +1,7 @@
 package me.barny1094875.launchpad.Listeners;
 
 import me.barny1094875.launchpad.LaunchPad;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -24,8 +25,11 @@ public class OnEntityDamage implements Listener {
                 ArrayList<Player> launchedList = LaunchPad.getLaunchedPlayers();
                 Player eventPlayer = (Player) event.getEntity();
                 if (launchedList.contains(eventPlayer)) {
-//                    event.setCancelled(true);
-                    event.setDamage(0.0);
+                    event.setCancelled(true);
+//                    event.setDamage(0.0);
+//                    eventPlayer.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1, 255));
+//                    eventPlayer.setAbsorptionAmount(1000);
+
                     launchedList.remove(eventPlayer);
                 }
             }
