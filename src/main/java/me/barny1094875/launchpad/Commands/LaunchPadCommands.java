@@ -232,6 +232,60 @@ public class LaunchPadCommands implements CommandExecutor {
                         FileConfiguration oldPadCoords = padCoords;
                         padCoords = padConfig.reloadConfig();
 
+                        // check through the config to make sure that
+                        // there are as many launchpads as numberOfPads
+                        // if there is not, move all of the pad number down
+                        // by one starting at the missing number
+
+                        int maxNumberOfPads = numberOfPads + 1;
+                        if (numberOfPads > 1) {
+                            for (int i = 1; i < maxNumberOfPads; i++) {
+                                // if the world is null, then the pad is not set
+                                if (padCoords.getString(i + ".world") == null) {
+                                    // move all other pads up one id number
+                                    for (int j = i; j < padCoords.getInt("numberOfPads") + 1; j++) {
+                                        padCoords.set("" + j + ".x", padCoords.getInt("" + (j + 1) + ".x"));
+                                        padCoords.set("" + j + ".y", padCoords.getInt("" + (j + 1) + ".y"));
+                                        padCoords.set("" + j + ".z", padCoords.getInt("" + (j + 1) + ".z"));
+                                        padCoords.set("" + j + ".world", padCoords.getString("" + (j + 1) + ".world"));
+                                        padCoords.set("" + j + ".xpower", padCoords.getDouble("" + (j + 1) + ".xpower"));
+                                        padCoords.set("" + j + ".ypower", padCoords.getDouble("" + (j + 1) + ".ypower"));
+                                        padCoords.set("" + j + ".zpower", padCoords.getDouble("" + (j + 1) + ".zpower"));
+                                        // this makes it easier to search the config file
+                                        // use CTRL+F and search for the coords of the pad
+                                        padCoords.set("" + j + ".searchID", padCoords.getString("" + (j + 1) + ".searchID"));
+                                    }
+                                    padCoords.set("" + numberOfPads, null);
+                                    padCoords.set("numberOfPads", --numberOfPads);
+                                }
+                            }
+                            // check if the last pad exists
+                            if (padCoords.getString(numberOfPads + ".world") == null) {
+                                // decrement numberOfPads by one
+                                padCoords.set("numberOfPads", --numberOfPads);
+                            }
+                        }
+                        else {
+                            // if numberOfPads is 1, then there can only be one pad
+                            // check if it exists. If not, set numberOfPads to 0
+                            if (padCoords.getString("1.world") == null) {
+                                padCoords.set("numberOfPads", 0);
+
+                            }
+                        }
+
+                        // check if numberOfPads is below 0
+                        // if so, set it to 0
+                        if(padCoords.getInt("numberOfPads") < 0){
+                            padCoords.set("numberOfPads", 0);
+                        }
+
+
+
+
+
+
+
                         /* check that everything has what it is supposed to have */
 
                         // check that numberOfPads is an integer
@@ -368,8 +422,8 @@ public class LaunchPadCommands implements CommandExecutor {
                             if(padCoords.get(i + ".world") instanceof String){
                                 // check if world is set to a valid name
                                 if(!(padCoords.getString(i + ".world").equals("world")
-                                || padCoords.getString(i + ".world").equals("world_nether")
-                                || padCoords.getString(i + ".world").equals("world_the_end"))){
+                                        || padCoords.getString(i + ".world").equals("world_nether")
+                                        || padCoords.getString(i + ".world").equals("world_the_end"))){
                                     // if not, tell the player that it has to be one of the above
                                     sender.sendMessage(Component.text("[LaunchPad]")
                                             .color(TextColor.color(0, 255, 0))
@@ -459,68 +513,16 @@ public class LaunchPadCommands implements CommandExecutor {
                         }
 
 
+                        // save and reload the config
+                        padConfig.save();
+                        padConfig.reload();
 
 
-
-
-                        // check through the config to make sure that
-                        // there are as many launchpads as numberOfPads
-                        // if there is not, move all of the pad number down
-                        // by one starting at the missing number
-
-                        int maxNumberOfPads = numberOfPads + 1;
-                        if (numberOfPads > 1) {
-                            for (int i = 1; i < maxNumberOfPads; i++) {
-                                // if the world is null, then the pad is not set
-                                if (padCoords.getString(i + ".world") == null) {
-                                    // move all other pads up one id number
-                                    for (int j = i; j < padCoords.getInt("numberOfPads") + 1; j++) {
-                                        padCoords.set("" + j + ".x", padCoords.getInt("" + (j + 1) + ".x"));
-                                        padCoords.set("" + j + ".y", padCoords.getInt("" + (j + 1) + ".y"));
-                                        padCoords.set("" + j + ".z", padCoords.getInt("" + (j + 1) + ".z"));
-                                        padCoords.set("" + j + ".world", padCoords.getString("" + (j + 1) + ".world"));
-                                        padCoords.set("" + j + ".xpower", padCoords.getDouble("" + (j + 1) + ".xpower"));
-                                        padCoords.set("" + j + ".ypower", padCoords.getDouble("" + (j + 1) + ".ypower"));
-                                        padCoords.set("" + j + ".zpower", padCoords.getDouble("" + (j + 1) + ".zpower"));
-                                        // this makes it easier to search the config file
-                                        // use CTRL+F and search for the coords of the pad
-                                        padCoords.set("" + j + ".searchID", padCoords.getString("" + (j + 1) + ".searchID"));
-                                    }
-                                    padCoords.set("" + numberOfPads, null);
-                                    padCoords.set("numberOfPads", --numberOfPads);
-                                }
-                            }
-                            // check if the last pad exists
-                            if (padCoords.getString(numberOfPads + ".world") == null) {
-                                // decrement numberOfPads by one
-                                padCoords.set("numberOfPads", --numberOfPads);
-                            }
-                        }
-                        else {
-                            // if numberOfPads is 1, then there can only be one pad
-                            // check if it exists. If not, set numberOfPads to 0
-                            if (padCoords.getString("1.world") == null) {
-                                padCoords.set("numberOfPads", 0);
-
-                            }
-                        }
-
-                        // check if numberOfPads is below 0
-                        // if so, set it to 0
-                        if(padCoords.getInt("numberOfPads") < 0){
-                            padCoords.set("numberOfPads", 0);
-                        }
-
-                        // tell the player that ran the command that they plugin config has been reloaded
+                        // tell the player that ran the command that the plugin config has been reloaded
                         sender.sendMessage(Component.text("[LaunchPad]")
                                 .color(TextColor.color(0, 255, 0))
                                 .append(Component.text(" Config Reloaded")
                                         .color(TextColor.color(255, 255, 0))));
-
-
-                        // save and reload the config
-                        padConfig.save();
-                        padConfig.reload();
                     }
                     // if the player doesn't have permission to use this command,
                     // let them know
@@ -641,6 +643,8 @@ public class LaunchPadCommands implements CommandExecutor {
                                                         .color(TextColor.color(0, 255, 0))
                                                         .append(Component.text(" Launch Pad Removed From: " + padX + ", " + padY + ", " + padZ)
                                                                 .color(TextColor.color(255, 255, 0))));
+
+                                                return true;
 
                                             }
                                         }
