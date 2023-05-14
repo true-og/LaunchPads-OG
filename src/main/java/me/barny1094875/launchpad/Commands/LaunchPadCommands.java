@@ -229,7 +229,123 @@ public class LaunchPadCommands implements CommandExecutor {
                 // if the command is /launchpad reloadconfig
                 else if (args[0].equalsIgnoreCase("reloadconfig")) {
                     if (sender.hasPermission("launchpad.canreload")) {
+                        FileConfiguration oldPadCoords = padCoords;
                         padCoords = padConfig.reloadConfig();
+
+                        // check that everything has what it is supposed to have
+
+                        // check that numberOfPads is an integer
+                        if(!(padCoords.get("numberOfPads") instanceof Integer)){
+                            // tell the player that something is wrong with numberOfPads
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" numberOfPads has to be an integer")
+                                            .color(TextColor.color(255, 0, 0))));
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+                        // check that numberOfPads is greater than or equal to 0
+                        else if(padCoords.getInt("numberOfPads") < 0){
+                            // tell the player that numberOfPads has to be greater than 0
+                            sender.sendMessage(Component.text("[LaunchPad]")
+                                    .color(TextColor.color(0, 255, 0))
+                                    .append(Component.text(" numberOfPads has to be greater than or equal to 0")
+                                            .color(TextColor.color(255, 0, 0))));
+                            padConfig.config = oldPadCoords;
+                            return true;
+                        }
+
+                        // check that every world is a string, every x, y, z is an integer,
+                        // and every xpower, ypower, zpower are doubles
+                        for(int i = 1; i < numberOfPads + 1; i++){
+                            // check if world is set to a string
+                            if(padCoords.get(i + ".world") instanceof String){
+                                // check if world is set to a valid name
+                                if(!(padCoords.getString(i + ".world").equals("world")
+                                || padCoords.getString(i + ".world").equals("world_nether")
+                                || padCoords.getString(i + ".world").equals("world_the_end"))){
+                                    // if not, tell the player that it has to be one of the above
+                                    sender.sendMessage(Component.text("[LaunchPad]")
+                                            .color(TextColor.color(0, 255, 0))
+                                            .append(Component.text(" world of pad ID " + i + " must be either " +
+                                                            "\"world\", \"world_nether\", or \"world_the_end\" ")
+                                                    .color(TextColor.color(255, 0, 0))));
+                                    padConfig.config = oldPadCoords;
+                                    return true;
+                                }
+                            }
+                            else{
+                                // tell the player that the world has to be a string
+                                sender.sendMessage(Component.text("[LaunchPad]")
+                                        .color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(" world of pad ID " + i + " must be a string")
+                                                .color(TextColor.color(255, 0, 0))));
+                                padConfig.config = oldPadCoords;
+                                return true;
+                            }
+
+                            // check that x,y,z are integers
+                            if(!(padCoords.get(i + ".x") instanceof Integer)){
+                                // tell the player that the x needs to be an integer
+                                sender.sendMessage(Component.text("[LaunchPad]")
+                                        .color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(" x of pad ID " + i + " must be an integer")
+                                                .color(TextColor.color(255, 0, 0))));
+                                padConfig.config = oldPadCoords;
+                                return true;
+                            }
+                            if(!(padCoords.get(i + ".y") instanceof Integer)){
+                                // tell the player that the y needs to be an integer
+                                sender.sendMessage(Component.text("[LaunchPad]")
+                                        .color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(" y of pad ID \" + i + \" must be an integer")
+                                                .color(TextColor.color(255, 0, 0))));
+                                padConfig.config = oldPadCoords;
+                                return true;
+                            }
+                            if(!(padCoords.get(i + ".z") instanceof Integer)){
+                                // tell the player that the z needs to be an integer
+                                sender.sendMessage(Component.text("[LaunchPad]")
+                                        .color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(" z of pad ID \" + i + \" must be an integer")
+                                                .color(TextColor.color(255, 0, 0))));
+                                padConfig.config = oldPadCoords;
+                                return true;
+                            }
+
+
+                            // check if xpower, ypower, zpower are doubles
+                            if(!(padCoords.get(i + ".xpower") instanceof Double)){
+                                // tell the player that the x needs to be an integer
+                                sender.sendMessage(Component.text("[LaunchPad]")
+                                        .color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(" xpower of pad ID " + i + " must be an double")
+                                                .color(TextColor.color(255, 0, 0))));
+                                padConfig.config = oldPadCoords;
+                                return true;
+                            }
+                            if(!(padCoords.get(i + ".ypower") instanceof Double)){
+                                // tell the player that the y needs to be an integer
+                                sender.sendMessage(Component.text("[LaunchPad]")
+                                        .color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(" ypower of pad ID \" + i + \" must be an double")
+                                                .color(TextColor.color(255, 0, 0))));
+                                padConfig.config = oldPadCoords;
+                                return true;
+                            }
+                            if(!(padCoords.get(i + ".zpower") instanceof Double)){
+                                // tell the player that the z needs to be an integer
+                                sender.sendMessage(Component.text("[LaunchPad]")
+                                        .color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(" zpower of pad ID \" + i + \" must be an double")
+                                                .color(TextColor.color(255, 0, 0))));
+                                padConfig.config = oldPadCoords;
+                                return true;
+                            }
+                        }
+
+
+
                         // check through the config to make sure that
                         // there are as many launchpads as numberOfPads
                         // if there is not, move all of the pad number down
@@ -423,7 +539,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                                 .color(TextColor.color(255, 0, 0))));
                             }
                         }
-                        // if it's /launchpad delpad <x> <y> <z>
+                        // if it's /launchpad delete <x> <y> <z>
                         else if (args.length == 4) {
                             // check for a launchpad at the coords given in the player's world
                             int blockX = Integer.parseInt(args[1]);
@@ -476,7 +592,7 @@ public class LaunchPadCommands implements CommandExecutor {
                             }
 
                         }
-                        // if it's /launchpad delpad <world> <x> <y> <z>
+                        // if it's /launchpad delete <world> <x> <y> <z>
                         else if(args.length == 5){
                             // check of a launchpad with the given coords
                             // allow the names overworld, nether, and end to be used

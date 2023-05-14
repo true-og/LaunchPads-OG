@@ -19,7 +19,7 @@ public class Config {
     protected final boolean createIfNotExist, resource;
     protected final JavaPlugin plugin;
 
-    protected FileConfiguration config;
+    public FileConfiguration config;
     protected File file, path;
     protected String name;
 
