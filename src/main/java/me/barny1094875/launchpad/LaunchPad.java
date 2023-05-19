@@ -2,10 +2,7 @@ package me.barny1094875.launchpad;
 
 import me.barny1094875.launchpad.Commands.LaunchPadCommandCompleter;
 import me.barny1094875.launchpad.Commands.LaunchPadCommands;
-import me.barny1094875.launchpad.Listeners.OnBlockBreak;
-import me.barny1094875.launchpad.Listeners.OnBlockPlace;
-import me.barny1094875.launchpad.Listeners.OnEntityDamage;
-import me.barny1094875.launchpad.Listeners.OnPlayerMove;
+import me.barny1094875.launchpad.Listeners.*;
 import me.barny1094875.launchpad.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

@@ -23,12 +23,26 @@ public class LaunchPadCommandCompleter implements TabCompleter {
             result.add("give");
             result.add("delete");
             result.add("reloadconfig");
+            result.add("help");
 
             // sort the list
             Collections.sort(result);
 
             return result;
 
+        }
+        else if(args.length == 2){
+            if(args[0].equalsIgnoreCase("help")){
+                // build the list to return
+                ArrayList<String> result = new ArrayList<>();
+                result.add("set");
+                result.add("delete");
+
+                // sort the list
+                Collections.sort(result);
+
+                return result;
+            }
         }
 
         return null;

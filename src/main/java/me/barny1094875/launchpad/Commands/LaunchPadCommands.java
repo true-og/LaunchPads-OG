@@ -5,6 +5,7 @@ import me.barny1094875.launchpad.config.Config;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -221,6 +222,12 @@ public class LaunchPadCommands implements CommandExecutor {
                                             .color(TextColor.color(255, 0, 0))));
                         }
                     }
+
+
+
+
+
+
 
 
                     // if the command is /launchpad reloadconfig
@@ -456,7 +463,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                     // tell the player that the y needs to be an integer
                                     sender.sendMessage(Component.text("[LaunchPad]")
                                             .color(TextColor.color(0, 255, 0))
-                                            .append(Component.text(" y of pad ID \" + i + \" must be an integer")
+                                            .append(Component.text(" y of pad ID " + i + " must be an integer")
                                                     .color(TextColor.color(255, 0, 0))));
                                     // reset padConfig to the pre-reload config
                                     padConfig.config = oldPadCoords;
@@ -466,7 +473,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                     // tell the player that the z needs to be an integer
                                     sender.sendMessage(Component.text("[LaunchPad]")
                                             .color(TextColor.color(0, 255, 0))
-                                            .append(Component.text(" z of pad ID \" + i + \" must be an integer")
+                                            .append(Component.text(" z of pad ID " + i + " must be an integer")
                                                     .color(TextColor.color(255, 0, 0))));
                                     // reset padConfig to the pre-reload config
                                     padConfig.config = oldPadCoords;
@@ -489,7 +496,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                     // tell the player that the y needs to be an integer
                                     sender.sendMessage(Component.text("[LaunchPad]")
                                             .color(TextColor.color(0, 255, 0))
-                                            .append(Component.text(" ypower of pad ID \" + i + \" must be a double")
+                                            .append(Component.text(" ypower of pad ID " + i + " must be a double")
                                                     .color(TextColor.color(255, 0, 0))));
                                     // reset padConfig to the pre-reload config
                                     padConfig.config = oldPadCoords;
@@ -499,7 +506,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                     // tell the player that the z needs to be an integer
                                     sender.sendMessage(Component.text("[LaunchPad]")
                                             .color(TextColor.color(0, 255, 0))
-                                            .append(Component.text(" zpower of pad ID \" + i + \" must be a double")
+                                            .append(Component.text(" zpower of pad ID " + i + " must be a double")
                                                     .color(TextColor.color(255, 0, 0))));
                                     // reset padConfig to the pre-reload config
                                     padConfig.config = oldPadCoords;
@@ -528,6 +535,12 @@ public class LaunchPadCommands implements CommandExecutor {
                                             .color(TextColor.color(255, 0, 0))));
                         }
                     }
+
+
+
+
+
+
 
 
                     // if the command is /launchpad givepad
@@ -573,6 +586,12 @@ public class LaunchPadCommands implements CommandExecutor {
                             }
                         }
                     }
+
+
+
+
+
+
 
 
                     // if the command is /launchpad delpad
@@ -779,11 +798,105 @@ public class LaunchPadCommands implements CommandExecutor {
                     }
 
 
+
+
+
+
+
+                    // if the command is /launchpad help
+                    else if(args[0].equalsIgnoreCase("help")){
+                        var mm = MiniMessage.miniMessage();
+
+//                        Component parsed = mm.deserialize(
+//                                // create a separator line
+//                                "-----------------------------------------------" +
+//                                // tell the player about /launchpad give
+//                                "\n<color:#0080ff>/launchpad give" +
+//                                "\n<color:white>Give yourself a launchpad" +
+//                                // tell the player about /launchpad set
+//                                "\n\n<color:#0080ff>/launchpad set" +
+//                                "\n<color:white>Set a launchpad at your feet" +
+//                                "\n\n<color:#0080ff>/launchpad set <color:#00ffff><xpower> <ypower> <zpower>" +
+//                                "\n<color:white>Set a launchpad at your feet with those powers" +
+//                                "\n\n<color:#0080ff>/launchpad set <color:#00ffff><x> <y> <z> <xpower> <ypower> <zpower>" +
+//                                "\n<color:white>Set a launchpad there with those powers" +
+//                                // tell the player about /launchpad delete
+//                                "\n\n<color:#0080ff>/launchpad delete" +
+//                                "\n<color:white>Delete the launchpad on the block you are pointing at" +
+//                                "\n\n<color:#0080ff>/launchpad delete <color:#00ffff><x> <y> <z>" +
+//                                "\n<color:white>Delete the launchpad from that block" +
+//                                "\n\n<color:#0080ff>/launchpad delete <color:#00ffff><world> <x> <y> <z>" +
+//                                "\n<color:white>Delete the launchpad from that block in that world" +
+//                                // tell the player about /launchpad reloadconfig
+//                                "\n\n<color:#0080ff>/launchpad reloadconfig" +
+//                                "\n<color:white>Reload the configuration file after a change" +
+//                                // tell the player about /launchpad help
+//                                "\n\n<color:#0080ff>/launchpad help" +
+//                                "\nDisplay this page");
+
+
+                        // yellow ----
+                        // gold Help: LaunchPad
+                        // yellow --
+                        // gold Page: 1/2
+                        // yellow ----
+                        // gold /launchpad ...
+                        // white description
+
+                        // if the player asked for the home page of help
+                        if(args.length == 1) {
+                            // display the home page of help
+                            Component parsed = mm.deserialize(
+                                    // The top of the page
+                                    "<color:yellow>---- <color:gold>Help: LaunchPad <color:yellow>----" +
+                                    "\n<color:gold>Commands from LaunchPads-OG:" +
+                                    "\n/launchpad help set: <color:white>Display detailed help for set" +
+                                    "\n<color:gold>/launchpad help delete: <color:white>Display detailed help for delete" +
+                                    "\n<color:gold>/launchpad reloadconfig: <color:white>Reload the plugin configuration" +
+                                    "\n<color:gold>/launchpad give: <color:white>Give yourself a launchpad item" +
+                                    "\n<color:gold>/launchpad help: <color:white>Display this page");
+
+
+                            sender.sendMessage(parsed);
+                        }
+                        else{
+                            // check which command the player asked for help with
+                            // if they asked for set
+                            if(args[1].equalsIgnoreCase("set")){
+                                Component parsed = mm.deserialize(
+                                    // The top of the page
+                                    "<color:yellow>---- <color:gold>Help: /launchpad set <color:yellow>----" +
+//                                    "\n<color:gold>Help for /launchpad set:" +
+                                    "\n<color:gold>/launchpad set: <color:white>Set a launchpad at your feet with the default power values" +
+                                    "\n<color:gold>/launchpad set <color:red>[xpower] [ypower] [zpower]: <color:white>Set a launchpad at your feet with those powers" +
+                                    "\n<color:gold>/launchpad set <color:red>[x] [y] [z] [xpower] [ypower] [zpower]: <color:white>Set a launchpad at those coordinates with those powers");
+
+                                sender.sendMessage(parsed);
+                            }
+                            // if they asked for delete
+                            else if(args[1].equalsIgnoreCase("delete")){
+                                Component parsed = mm.deserialize(
+                                    // The top of the page
+                                    "<color:yellow>---- <color:gold>Help: /launchpad delete <color:yellow>----" +
+//                                    "\n<color:gold>Help for /launchpad delete:" +
+                                    "\n<color:gold>/launchpad delete: <color:white>Delete the launchpad in or above the block you are looking at" +
+                                    "\n<color:gold>/launchpad delete <color:red>[x] [y] [z]: <color:white>Delete the launchpad at those coordinates" +
+                                    "\n<color:gold>/launchpad delete <color:red><world> [x] [y] [z]: <color:white>Delete the launchpad at those coordinates in that world");
+
+                                sender.sendMessage(parsed);
+                            }
+                        }
+                    }
+
+
+
+
+
                     // the player did not input an acceptable second argument
                     else {
                         // tell the player that that command doesn't exist
                         sender.sendMessage(Component.text("[LaunchPad]")
-                                .color(TextColor.color(0, 255, 0))
+                                    .color(TextColor.color(0, 255, 0))
                                 .append(Component.text(" Command ")
                                         .color(TextColor.color(255, 0, 0)))
                                 .append(Component.text("/" + command.getName() + " " + args[0])
@@ -792,6 +905,13 @@ public class LaunchPadCommands implements CommandExecutor {
                                         .color(TextColor.color(255, 0, 0))));
                     }
                 }
+
+
+
+
+
+
+
             }
             else{
                 // tell the player that they need to provide a command

@@ -14,7 +14,8 @@ import java.util.ArrayList;
 
 public class OnEntityDamage implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+//    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler
     public void onEntityDamage(EntityDamageEvent event){
 
         // check if the damage was fall damage
@@ -26,9 +27,6 @@ public class OnEntityDamage implements Listener {
                 Player eventPlayer = (Player) event.getEntity();
                 if (launchedList.contains(eventPlayer)) {
                     event.setCancelled(true);
-//                    event.setDamage(0.0);
-//                    eventPlayer.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1, 255));
-//                    eventPlayer.setAbsorptionAmount(1000);
 
                     launchedList.remove(eventPlayer);
                 }
