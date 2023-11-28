@@ -40,7 +40,7 @@ public class LaunchPadCommands implements CommandExecutor {
                     World world = player.getWorld();
 
 
-                    // if the command is /launchpad setpad
+                    // if the command is /launchpad set
                     if (args[0].equalsIgnoreCase("set")) {
                         if (sender.hasPermission("launchpad.canset")) {
                             // if the command is just /launchpad setpad
@@ -543,7 +543,7 @@ public class LaunchPadCommands implements CommandExecutor {
 
 
 
-                    // if the command is /launchpad givepad
+                    // if the command is /launchpad give
                     else if (args[0].equalsIgnoreCase("give")) {
                         // if it's just /givepad
                         if (args.length == 1) {
@@ -594,7 +594,7 @@ public class LaunchPadCommands implements CommandExecutor {
 
 
 
-                    // if the command is /launchpad delpad
+                    // if the command is /launchpad delete
                     else if (args[0].equalsIgnoreCase("delete")) {
                         if (player.hasPermission("launchpad.candelete")) {
                             // if it's just /launchpad delpad
