@@ -1,7 +1,7 @@
 # LaunchPads-OG
 Add launch pads to minecraft
 
-Current Target: Purpur 1.18.2
+Current Target: Purpur 1.19.4
 
 Authors: Barny1094875.
 
