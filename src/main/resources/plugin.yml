@@ -1,7 +1,7 @@
-name: LaunchPad-OG
-version: '2.0'
-main: me.barny1094875.launchpad.LaunchPad
-api-version: 1.19
+name: LaunchPads-OG
+version: '${version}'
+main: net.trueog.launchpadsog.LaunchPadsOG
+api-version: '${apiVersion}'
 commands:
   launchpad:
     usage: /launchpad
