@@ -12,8 +12,9 @@ import org.jetbrains.annotations.Nullable;
 public class LaunchPadCommandCompleter implements TabCompleter {
 
     @Override
-    public @Nullable List<String> onTabComplete(
-            @NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
+            @NotNull String label, @NotNull String[] args)
+    {
 
         if (args.length == 1) {
 
@@ -31,7 +32,9 @@ public class LaunchPadCommandCompleter implements TabCompleter {
             return result;
 
         } else if (args.length == 2) {
+
             if (args[0].equalsIgnoreCase("help")) {
+
                 // build the list to return
                 ArrayList<String> result = new ArrayList<>();
                 result.add("set");
@@ -41,9 +44,13 @@ public class LaunchPadCommandCompleter implements TabCompleter {
                 Collections.sort(result);
 
                 return result;
+
             }
+
         }
 
         return null;
+
     }
+
 }

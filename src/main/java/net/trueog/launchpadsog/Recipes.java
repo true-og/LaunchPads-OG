@@ -45,6 +45,7 @@ public class Recipes {
         baseRecipe.setIngredient('r', Material.REDSTONE_BLOCK);
 
         Bukkit.addRecipe(baseRecipe);
+
     }
 
     public static void addLauncherLauncher() {
@@ -73,6 +74,7 @@ public class Recipes {
         armRecipe.setIngredient('b', Material.BUCKET);
 
         Bukkit.addRecipe(armRecipe);
+
     }
 
     public static void addLauncherExploder() {
@@ -100,6 +102,7 @@ public class Recipes {
         exploderRecipe.setIngredient('b', Material.TARGET);
 
         Bukkit.addRecipe(exploderRecipe);
+
     }
 
     public static void addLauncherActivator() {
@@ -127,6 +130,7 @@ public class Recipes {
         activatorRecipe.setIngredient('d', Material.DIAMOND_BLOCK);
 
         Bukkit.addRecipe(activatorRecipe);
+
     }
 
     public static void addLaunchPad() {
@@ -158,5 +162,7 @@ public class Recipes {
         padRecipe.setIngredient('a', launcherActivator);
 
         Bukkit.addRecipe(padRecipe);
+
     }
+
 }

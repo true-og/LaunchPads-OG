@@ -15,6 +15,7 @@ public class OnBlockPlace implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
+
         ItemStack item = event.getItemInHand();
         Block block = event.getBlockPlaced();
 
@@ -24,7 +25,9 @@ public class OnBlockPlace implements Listener {
 
         // if the item placed was a launch pad
         if (item.lore() != null) {
+
             if (item.lore().equals(loreList)) {
+
                 Config padConfig = LaunchPadsOG.config();
                 FileConfiguration padCoords = padConfig.getConfig();
                 int padNumber = padCoords.getInt("numberOfPads") + 1;
@@ -43,7 +46,11 @@ public class OnBlockPlace implements Listener {
                 padCoords.set("numberOfPads", padNumber);
 
                 padConfig.save();
+
             }
+
         }
+
     }
+
 }

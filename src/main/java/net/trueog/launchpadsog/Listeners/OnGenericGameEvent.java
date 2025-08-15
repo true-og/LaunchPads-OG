@@ -17,18 +17,27 @@ public class OnGenericGameEvent implements Listener {
     // to remove them from the launched player List
     @EventHandler
     public void onGenericGameEvent(GenericGameEvent event) {
+
         // check if the event was an entity hitting the ground
         if (event.getEvent().equals(GameEvent.HIT_GROUND)) {
+
             // if the entity was a player
             if (event.getEntity() instanceof Player) {
+
                 Player player = (Player) event.getEntity();
 
                 // if the player was in the launched list
                 if (LaunchPadsOG.getLaunchedPlayers().contains(player)) {
+
                     // set the player's fall distance to 4
                     player.setFallDistance(4.0f);
+
                 }
+
             }
+
         }
+
     }
+
 }
