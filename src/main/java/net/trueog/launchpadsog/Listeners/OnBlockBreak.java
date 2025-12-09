@@ -2,10 +2,7 @@ package net.trueog.launchpadsog.Listeners;
 
 import java.util.Collections;
 import java.util.Vector;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextDecoration;
-import net.trueog.launchpadsog.LaunchPadsOG;
-import net.trueog.launchpadsog.config.Config;
+
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -18,6 +15,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.trueog.launchpadsog.LaunchPadsOG;
+
 public class OnBlockBreak implements Listener {
 
     // check to see if the block broken was a launch pad
@@ -26,8 +27,7 @@ public class OnBlockBreak implements Listener {
     @EventHandler
     public void onBlockBreakEvent(BlockBreakEvent event) {
 
-        Config padConfig = LaunchPadsOG.config();
-        FileConfiguration padCoords = padConfig.getConfig();
+        FileConfiguration padCoords = LaunchPadsOG.getConfiguration();
         Block block = event.getBlock();
         World world = block.getWorld();
         Player player = event.getPlayer();
@@ -79,7 +79,7 @@ public class OnBlockBreak implements Listener {
 
                                 padCoords.set("" + numberOfPads, null);
                                 padCoords.set("numberOfPads", numberOfPads - 1);
-                                padConfig.save();
+                                LaunchPadsOG.getPlugin().saveConfig();
 
                                 // if the block there was a pressure plate,
                                 // then a launch pad item was placed

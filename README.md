@@ -3,7 +3,7 @@ Add launch pads to minecraft
 
 Current Target: Purpur 1.19.4
 
-Authors: Barny1094875.
+Authors: Barny1094875, NotAlexNoyle.
 
 <h3>To build:</h3>
 

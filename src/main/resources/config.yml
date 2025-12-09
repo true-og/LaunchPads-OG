@@ -1,0 +1,2602 @@
+cancraft: false
+defaultXpower: 3.0
+defaultYpower: 4.0
+defaultZpower: 3.0
+numberOfPads: 288
+idleParticleCount: 4
+idleParticlePower: 1.5
+padLaunchParticleCount: 80
+padLaunchParticlePower: 1.0
+playerLaunchParticleCountMultipier: 1.0
+'1':
+  world: world
+  x: 0
+  y: 63
+  z: -180
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 0 63 -180
+'2':
+  world: world
+  x: 48
+  y: 64
+  z: -146
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 48 64 -146
+'3':
+  world: world
+  x: 78
+  y: 63
+  z: -151
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 78 63 -151
+'4':
+  world: world
+  x: 46
+  y: 64
+  z: -169
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 46 64 -169
+'5':
+  world: world
+  x: -18
+  y: 63
+  z: -203
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -18 63 -203
+'6':
+  world: world
+  x: 0
+  y: 63
+  z: -226
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 0 63 -226
+'7':
+  world: world
+  x: 23
+  y: 63
+  z: -203
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 23 63 -203
+'8':
+  world: world
+  x: 0
+  y: 63
+  z: -260
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 0 63 -260
+'9':
+  world: world
+  x: 21
+  y: 69
+  z: -345
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 21 69 -345
+'10':
+  world: world
+  x: 2
+  y: 67
+  z: -299
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 2 67 -299
+'11':
+  world: world
+  x: 57
+  y: 64
+  z: -246
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 57 64 -246
+'12':
+  world: world
+  x: 82
+  y: 76
+  z: -292
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 82 76 -292
+'13':
+  world: world
+  x: 123
+  y: 67
+  z: -184
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 123 67 -184
+'14':
+  world: world
+  x: 93
+  y: 63
+  z: -222
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 93 63 -222
+'15':
+  world: world
+  x: 105
+  y: 63
+  z: -156
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 105 63 -156
+'16':
+  world: world
+  x: 113
+  y: 82
+  z: -135
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 113 82 -135
+'17':
+  world: world
+  x: 111
+  y: 86
+  z: -101
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 111 86 -101
+'18':
+  world: world
+  x: 114
+  y: 120
+  z: -310
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 114 120 -310
+'19':
+  world: world
+  x: 95
+  y: 138
+  z: -290
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 95 138 -290
+'20':
+  world: world
+  x: -91
+  y: 66
+  z: -235
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -91 66 -235
+'21':
+  world: world
+  x: -174
+  y: 66
+  z: -195
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -174 66 -195
+'22':
+  world: world
+  x: -164
+  y: 66
+  z: -290
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -164 66 -290
+'23':
+  world: world
+  x: -216
+  y: 75
+  z: -280
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -216 75 -280
+'24':
+  world: world
+  x: -143
+  y: 67
+  z: -247
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -143 67 -247
+'25':
+  world: world
+  x: -23
+  y: 64
+  z: -277
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -23 64 -277
+'26':
+  world: world
+  x: -16
+  y: 64
+  z: -99
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -16 64 -99
+'27':
+  world: world
+  x: 132
+  y: 86
+  z: -289
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 132 86 -289
+'28':
+  world: world
+  x: 7
+  y: 64
+  z: -146
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 7 64 -146
+'29':
+  world: world
+  x: -110
+  y: 70
+  z: -243
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -110 70 -243
+'30':
+  world: world
+  x: -216
+  y: 73
+  z: -221
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -216 73 -221
+'31':
+  world: world
+  x: -91
+  y: 66
+  z: -290
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -91 66 -290
+'32':
+  world: world
+  x: 140
+  y: 122
+  z: -97
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 140 122 -97
+'33':
+  world: world
+  x: 144
+  y: 125
+  z: -128
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 144 125 -128
+'34':
+  world: world
+  x: 146
+  y: 113
+  z: -162
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 146 113 -162
+'35':
+  world: world
+  x: 134
+  y: 117
+  z: -147
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 134 117 -147
+'36':
+  world: world
+  x: -136
+  y: 66
+  z: -178
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -136 66 -178
+'37':
+  world: world
+  x: -49
+  y: 64
+  z: -129
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -49 64 -129
+'38':
+  world: world
+  x: -109
+  y: 75
+  z: -133
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -109 75 -133
+'39':
+  world: world
+  x: -235
+  y: 64
+  z: -182
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -235 64 -182
+'40':
+  world: world
+  x: -227
+  y: 64
+  z: -235
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -227 64 -235
+'41':
+  world: world
+  x: -247
+  y: 64
+  z: -349
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -247 64 -349
+'42':
+  world: world
+  x: -138
+  y: 64
+  z: -321
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -138 64 -321
+'43':
+  world: world
+  x: -55
+  y: 64
+  z: -316
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -55 64 -316
+'44':
+  world: world
+  x: 9
+  y: 84
+  z: -233
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 9 84 -233
+'45':
+  world: world
+  x: -10
+  y: 85
+  z: -231
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -10 85 -231
+'46':
+  world: world
+  x: 28
+  y: 96
+  z: -179
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 28 96 -179
+'47':
+  world: world
+  x: 95
+  y: 91
+  z: -245
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 95 91 -245
+'48':
+  world: world
+  x: 34
+  y: 95
+  z: -104
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 34 95 -104
+'49':
+  world: world
+  x: 1
+  y: 98
+  z: -137
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 1 98 -137
+'50':
+  world: world
+  x: 54
+  y: 92
+  z: -148
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 54 92 -148
+'51':
+  world: world
+  x: 122
+  y: 85
+  z: -269
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 122 85 -269
+'52':
+  world: world
+  x: -21
+  y: 63
+  z: -234
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -21 63 -234
+'53':
+  world: world
+  x: 52
+  y: 78
+  z: -114
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 52 78 -114
+'54':
+  world: world
+  x: 52
+  y: 64
+  z: -100
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 52 64 -100
+'55':
+  world: world
+  x: 65
+  y: 87
+  z: -99
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 65 87 -99
+'56':
+  world: world
+  x: 54
+  y: 65
+  z: -307
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 54 65 -307
+'57':
+  world: world
+  x: 67
+  y: 75
+  z: -340
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 67 75 -340
+'58':
+  world: world
+  x: 83
+  y: 97
+  z: -333
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 83 97 -333
+'59':
+  world: world
+  x: 103
+  y: 110
+  z: -342
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 103 110 -342
+'60':
+  world: world
+  x: 141
+  y: 99
+  z: -312
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 141 99 -312
+'61':
+  world: world
+  x: 128
+  y: 74
+  z: -238
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 128 74 -238
+'62':
+  world: world
+  x: 59
+  y: 64
+  z: -130
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 59 64 -130
+'63':
+  world: world
+  x: 14
+  y: 64
+  z: -99
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 14 64 -99
+'64':
+  world: world
+  x: -20
+  y: 64
+  z: -123
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -20 64 -123
+'65':
+  world: world
+  x: 32
+  y: 64
+  z: -157
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 32 64 -157
+'66':
+  world: world
+  x: -36
+  y: 67
+  z: -241
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -36 67 -241
+'67':
+  world: world
+  x: -189
+  y: 74
+  z: -241
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -189 74 -241
+'68':
+  world: world
+  x: -193
+  y: 64
+  z: -312
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -193 64 -312
+'69':
+  world: world
+  x: -121
+  y: 66
+  z: -288
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -121 66 -288
+'70':
+  world: world
+  x: -194
+  y: 71
+  z: -114
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -194 71 -114
+'71':
+  world: world
+  x: -181
+  y: 64
+  z: -101
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -181 64 -101
+'72':
+  world: world
+  x: -169
+  y: 76
+  z: -120
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -169 76 -120
+'73':
+  world: world
+  x: -201
+  y: 67
+  z: -147
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -201 67 -147
+'74':
+  world: world
+  x: 58
+  y: 69
+  z: -328
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 58 69 -328
+'75':
+  world: world
+  x: 57
+  y: 73
+  z: -284
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 57 73 -284
+'76':
+  world: world
+  x: 61
+  y: 65
+  z: -295
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 61 65 -295
+'77':
+  world: world
+  x: 90
+  y: 84
+  z: -280
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 90 84 -280
+'78':
+  world: world
+  x: 119
+  y: 80
+  z: -254
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 119 80 -254
+'79':
+  world: world
+  x: 67
+  y: 84
+  z: -271
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 67 84 -271
+'80':
+  world: world
+  x: 70
+  y: 89
+  z: -257
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 70 89 -257
+'81':
+  world: world
+  x: 82
+  y: 87
+  z: -266
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 82 87 -266
+'82':
+  world: world
+  x: 70
+  y: 97
+  z: -174
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 70 97 -174
+'83':
+  world: world
+  x: 48
+  y: 93
+  z: -176
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 48 93 -176
+'84':
+  world: world
+  x: 15
+  y: 78
+  z: -188
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 15 78 -188
+'85':
+  world: world
+  x: 34
+  y: 80
+  z: -193
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 34 80 -193
+'86':
+  world: world
+  x: 74
+  y: 70
+  z: -98
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 74 70 -98
+'87':
+  world: world
+  x: 97
+  y: 68
+  z: -187
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 97 68 -187
+'88':
+  world: world
+  x: 32
+  y: 63
+  z: -271
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 32 63 -271
+'89':
+  world: world
+  x: 29
+  y: 69
+  z: -302
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 29 69 -302
+'90':
+  world: world
+  x: 5
+  y: 98
+  z: -103
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 5 98 -103
+'91':
+  world: world
+  x: 34
+  y: 97
+  z: -140
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 34 97 -140
+'92':
+  world: world
+  x: 89
+  y: 97
+  z: -107
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 89 97 -107
+'93':
+  world: world
+  x: 76
+  y: 72
+  z: -244
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 76 72 -244
+'94':
+  world: world
+  x: 85
+  y: 72
+  z: -275
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 85 72 -275
+'95':
+  world: world
+  x: 105
+  y: 66
+  z: -276
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 105 66 -276
+'96':
+  world: world
+  x: -165
+  y: 67
+  z: -244
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -165 67 -244
+'97':
+  world: world
+  x: -133
+  y: 66
+  z: -209
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -133 66 -209
+'98':
+  world: world
+  x: -138
+  y: 66
+  z: -227
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -138 66 -227
+'99':
+  world: world
+  x: -162
+  y: 66
+  z: -227
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -162 66 -227
+'100':
+  world: world
+  x: -97
+  y: 66
+  z: -276
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -97 66 -276
+'101':
+  world: world
+  x: 134
+  y: 66
+  z: -252
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 134 66 -252
+'102':
+  world: world
+  x: -172
+  y: 53
+  z: -262
+  xpower: 0.0
+  ypower: 3.0
+  zpower: 0.0
+  searchID: -172 53 -262
+'103':
+  world: world
+  x: -171
+  y: 53
+  z: -262
+  xpower: 0.0
+  ypower: 3.0
+  zpower: 0.0
+  searchID: -171 53 -262
+'104':
+  world: world
+  x: -158
+  y: 53
+  z: -263
+  xpower: 0.0
+  ypower: 3.0
+  zpower: 0.0
+  searchID: -158 53 -263
+'105':
+  world: world
+  x: -164
+  y: 53
+  z: -263
+  xpower: 0.0
+  ypower: 3.0
+  zpower: 0.0
+  searchID: -164 53 -263
+'106':
+  world: world
+  x: -107
+  y: 143
+  z: -187
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -107 143 -187
+'107':
+  world: world
+  x: 113
+  y: 64
+  z: -279
+  xpower: 0.0
+  ypower: 23333.0
+  zpower: 0.0
+  searchID: 113 64 -279
+'108':
+  world: world
+  x: -94
+  y: 87
+  z: -248
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -94 87 -248
+'109':
+  world: world
+  x: -39
+  y: 97
+  z: -238
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -39 97 -238
+'110':
+  world: world
+  x: 42
+  y: 86
+  z: -133
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 42 86 -133
+'111':
+  world: world
+  x: -17
+  y: 64
+  z: -143
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -17 64 -143
+'112':
+  world: world
+  x: 144
+  y: 68
+  z: -233
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 144 68 -233
+'113':
+  world: world
+  x: 137
+  y: 65
+  z: -209
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 137 65 -209
+'114':
+  world: world
+  x: 98
+  y: 83
+  z: -143
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 98 83 -143
+'115':
+  world: world
+  x: 96
+  y: 73
+  z: -160
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 96 73 -160
+'116':
+  world: world
+  x: 121
+  y: 91
+  z: -163
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 121 91 -163
+'117':
+  world: world
+  x: 125
+  y: 103
+  z: -162
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 125 103 -162
+'118':
+  world: world
+  x: 113
+  y: 82
+  z: -178
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 113 82 -178
+'119':
+  world: world
+  x: 82
+  y: 69
+  z: -168
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 82 69 -168
+'120':
+  world: world
+  x: 60
+  y: 72
+  z: -154
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 60 72 -154
+'121':
+  world: world
+  x: 55
+  y: 82
+  z: -154
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 55 82 -154
+'122':
+  world: world
+  x: 59
+  y: 87
+  z: -166
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 59 87 -166
+'123':
+  world: world
+  x: 38
+  y: 91
+  z: -168
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 38 91 -168
+'124':
+  world: world
+  x: 27
+  y: 82
+  z: -170
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 27 82 -170
+'125':
+  world: world
+  x: -216
+  y: 69
+  z: -186
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -216 69 -186
+'126':
+  world: world
+  x: -210
+  y: 79
+  z: -191
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -210 79 -191
+'127':
+  world: world
+  x: -196
+  y: 81
+  z: -269
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -196 81 -269
+'128':
+  world: world
+  x: -170
+  y: 77
+  z: -252
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -170 77 -252
+'129':
+  world: world
+  x: -128
+  y: 70
+  z: -261
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -128 70 -261
+'130':
+  world: world
+  x: -91
+  y: 66
+  z: -201
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -91 66 -201
+'131':
+  world: world
+  x: -100
+  y: 66
+  z: -176
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -100 66 -176
+'132':
+  world: world
+  x: -109
+  y: 64
+  z: -94
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -109 64 -94
+'133':
+  world: world
+  x: -11
+  y: 112
+  z: -116
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -11 112 -116
+'134':
+  world: world
+  x: -7
+  y: 77
+  z: -132
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -7 77 -132
+'135':
+  world: world
+  x: -7
+  y: 77
+  z: -114
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -7 77 -114
+'136':
+  world: world
+  x: 40
+  y: 76
+  z: -124
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: 40 76 -124
+'137':
+  world: world
+  x: -121
+  y: 66
+  z: -192
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -121 66 -192
+'138':
+  world: world
+  x: -94
+  y: 8
+  z: -246
+  xpower: 0.0
+  ypower: 400.0
+  zpower: 0.0
+  searchID: -94 8 -246
+'139':
+  world: world
+  x: -96
+  y: 8
+  z: -248
+  xpower: 0.0
+  ypower: 6.3
+  zpower: 0.0
+  searchID: -96 8 -248
+'140':
+  world: world
+  x: -171
+  y: 54
+  z: -206
+  xpower: 100.0
+  ypower: 0.5
+  zpower: 0.0
+  searchID: -171 54 -206
+'141':
+  world: world
+  x: -143
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -143 53 -204
+'142':
+  world: world
+  x: -149
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -149 53 -204
+'143':
+  world: world
+  x: -155
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -155 53 -204
+'144':
+  world: world
+  x: -161
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -161 53 -204
+'145':
+  world: world
+  x: -167
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -167 53 -204
+'146':
+  world: world
+  x: -173
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -173 53 -204
+'147':
+  world: world
+  x: -179
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -179 53 -204
+'148':
+  world: world
+  x: -185
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -185 53 -204
+'149':
+  world: world
+  x: -191
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -191 53 -204
+'150':
+  world: world
+  x: -197
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -197 53 -204
+'151':
+  world: world
+  x: -203
+  y: 53
+  z: -204
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -203 53 -204
+'152':
+  world: world
+  x: -206
+  y: 53
+  z: -204
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -206 53 -204
+'153':
+  world: world
+  x: -206
+  y: 53
+  z: -207
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -206 53 -207
+'154':
+  world: world
+  x: -206
+  y: 53
+  z: -213
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -206 53 -213
+'155':
+  world: world
+  x: -206
+  y: 53
+  z: -219
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -206 53 -219
+'156':
+  world: world
+  x: -206
+  y: 53
+  z: -225
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -206 53 -225
+'157':
+  world: world
+  x: -206
+  y: 53
+  z: -231
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -206 53 -231
+'158':
+  world: world
+  x: -206
+  y: 53
+  z: -237
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -206 53 -237
+'159':
+  world: world
+  x: -206
+  y: 53
+  z: -243
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -206 53 -243
+'160':
+  world: world
+  x: -203
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -203 53 -246
+'161':
+  world: world
+  x: -197
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -197 53 -246
+'162':
+  world: world
+  x: -191
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -191 53 -246
+'163':
+  world: world
+  x: -185
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -185 53 -246
+'164':
+  world: world
+  x: -179
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -179 53 -246
+'165':
+  world: world
+  x: -174
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -174 53 -246
+'166':
+  world: world
+  x: -167
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -167 53 -246
+'167':
+  world: world
+  x: -161
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -161 53 -246
+'168':
+  world: world
+  x: -155
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -155 53 -246
+'169':
+  world: world
+  x: -149
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -149 53 -246
+'170':
+  world: world
+  x: -143
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -143 53 -246
+'171':
+  world: world
+  x: -137
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -137 53 -246
+'172':
+  world: world
+  x: -131
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -131 53 -246
+'173':
+  world: world
+  x: -125
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -125 53 -246
+'174':
+  world: world
+  x: -119
+  y: 54
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -119 54 -246
+'175':
+  world: world
+  x: -113
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -113 53 -246
+'176':
+  world: world
+  x: -119
+  y: 53
+  z: -246
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -119 53 -246
+'177':
+  world: world
+  x: -98
+  y: 8
+  z: -246
+  xpower: 0.0
+  ypower: 8.5
+  zpower: 0.0
+  searchID: -98 8 -246
+'178':
+  world: world
+  x: -104
+  y: 53
+  z: -249
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -104 53 -249
+'179':
+  world: world
+  x: -104
+  y: 53
+  z: -255
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -104 53 -255
+'180':
+  world: world
+  x: -104
+  y: 53
+  z: -261
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -104 53 -261
+'181':
+  world: world
+  x: -104
+  y: 53
+  z: -267
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -104 53 -267
+'182':
+  world: world
+  x: -104
+  y: 53
+  z: -273
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -104 53 -273
+'183':
+  world: world
+  x: -209
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -209 53 -276
+'184':
+  world: world
+  x: -203
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -203 53 -276
+'185':
+  world: world
+  x: -197
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -197 53 -276
+'186':
+  world: world
+  x: -191
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -191 53 -276
+'187':
+  world: world
+  x: -179
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -179 53 -276
+'188':
+  world: world
+  x: -173
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -173 53 -276
+'189':
+  world: world
+  x: -167
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -167 53 -276
+'190':
+  world: world
+  x: -161
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -161 53 -276
+'191':
+  world: world
+  x: -155
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -155 53 -276
+'192':
+  world: world
+  x: -149
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -149 53 -276
+'193':
+  world: world
+  x: -143
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -143 53 -276
+'194':
+  world: world
+  x: -137
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -137 53 -276
+'195':
+  world: world
+  x: -131
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -131 53 -276
+'196':
+  world: world
+  x: -125
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -125 53 -276
+'197':
+  world: world
+  x: -119
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -119 53 -276
+'198':
+  world: world
+  x: -107
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -107 53 -276
+'199':
+  world: world
+  x: -113
+  y: 53
+  z: -276
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -113 53 -276
+'200':
+  world: world
+  x: -213
+  y: 35
+  z: -212
+  xpower: 0.0
+  ypower: 100.0
+  zpower: 0.0
+  searchID: -213 35 -212
+'201':
+  world: world
+  x: -213
+  y: 70
+  z: -212
+  xpower: 0.0
+  ypower: 100.0
+  zpower: 0.0
+  searchID: -213 70 -212
+'202':
+  world: world
+  x: -213
+  y: 89
+  z: -212
+  xpower: 0.0
+  ypower: 100.0
+  zpower: 0.0
+  searchID: -213 89 -212
+'203':
+  world: world
+  x: -213
+  y: 100
+  z: -212
+  xpower: 0.0
+  ypower: 100.0
+  zpower: 0.0
+  searchID: -213 100 -212
+'204':
+  world: world
+  x: -213
+  y: 165
+  z: -212
+  xpower: 0.0
+  ypower: 100.0
+  zpower: 0.0
+  searchID: -213 165 -212
+'205':
+  world: world
+  x: -213
+  y: 145
+  z: -212
+  xpower: 0.0
+  ypower: 100.0
+  zpower: 0.0
+  searchID: -213 145 -212
+'206':
+  world: world
+  x: -106
+  y: 52
+  z: -231
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -106 52 -231
+'207':
+  world: world
+  x: -135
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -135 34 -283
+'208':
+  world: world
+  x: -130
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -130 34 -283
+'209':
+  world: world
+  x: -124
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -124 34 -283
+'210':
+  world: world
+  x: -118
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -118 34 -283
+'211':
+  world: world
+  x: -112
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -112 34 -283
+'212':
+  world: world
+  x: -106
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -106 34 -283
+'213':
+  world: world
+  x: -100
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -100 34 -283
+'214':
+  world: world
+  x: -97
+  y: 34
+  z: -280
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -97 34 -280
+'215':
+  world: world
+  x: -97
+  y: 34
+  z: -274
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -97 34 -274
+'216':
+  world: world
+  x: -97
+  y: 34
+  z: -269
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -97 34 -269
+'217':
+  world: world
+  x: -97
+  y: 34
+  z: -263
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -97 34 -263
+'218':
+  world: world
+  x: -97
+  y: 34
+  z: -257
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -97 34 -257
+'219':
+  world: world
+  x: -97
+  y: 34
+  z: -251
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -97 34 -251
+'220':
+  world: world
+  x: -213
+  y: 34
+  z: -207
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -213 34 -207
+'221':
+  world: world
+  x: -213
+  y: 34
+  z: -201
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -213 34 -201
+'222':
+  world: world
+  x: -213
+  y: 34
+  z: -195
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -213 34 -195
+'223':
+  world: world
+  x: -213
+  y: 34
+  z: -189
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -213 34 -189
+'224':
+  world: world
+  x: -213
+  y: 34
+  z: -183
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -213 34 -183
+'225':
+  world: world
+  x: -210
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -210 34 -180
+'226':
+  world: world
+  x: -198
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -198 34 -180
+'227':
+  world: world
+  x: -192
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -192 34 -180
+'228':
+  world: world
+  x: -186
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -186 34 -180
+'229':
+  world: world
+  x: -180
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -180 34 -180
+'230':
+  world: world
+  x: -174
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -174 34 -180
+'231':
+  world: world
+  x: -168
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -168 34 -180
+'232':
+  world: world
+  x: -162
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -162 34 -180
+'233':
+  world: world
+  x: -156
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -156 34 -180
+'234':
+  world: world
+  x: -150
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -150 34 -180
+'235':
+  world: world
+  x: -144
+  y: 34
+  z: -180
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -144 34 -180
+'236':
+  world: world
+  x: -109
+  y: 77
+  z: -129
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -109 77 -129
+'237':
+  world: world
+  x: -170
+  y: 71
+  z: -149
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -170 71 -149
+'238':
+  world: world
+  x: -141
+  y: 34
+  z: -183
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -183
+'239':
+  world: world
+  x: -141
+  y: 34
+  z: -196
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -196
+'240':
+  world: world
+  x: -141
+  y: 34
+  z: -202
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -202
+'241':
+  world: world
+  x: -141
+  y: 34
+  z: -208
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -208
+'242':
+  world: world
+  x: -141
+  y: 34
+  z: -214
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -214
+'243':
+  world: world
+  x: -141
+  y: 34
+  z: -220
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -220
+'244':
+  world: world
+  x: -141
+  y: 34
+  z: -226
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -226
+'245':
+  world: world
+  x: -141
+  y: 34
+  z: -232
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -232
+'246':
+  world: world
+  x: -141
+  y: 34
+  z: -238
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -238
+'247':
+  world: world
+  x: -141
+  y: 34
+  z: -244
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -244
+'248':
+  world: world
+  x: -141
+  y: 34
+  z: -250
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -250
+'249':
+  world: world
+  x: -141
+  y: 34
+  z: -256
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -256
+'250':
+  world: world
+  x: -141
+  y: 34
+  z: -262
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -262
+'251':
+  world: world
+  x: -141
+  y: 34
+  z: -268
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -268
+'252':
+  world: world
+  x: -141
+  y: 34
+  z: -274
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -274
+'253':
+  world: world
+  x: -141
+  y: 34
+  z: -280
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -280
+'254':
+  world: world
+  x: -144
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -144 34 -283
+'255':
+  world: world
+  x: -155
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -155 34 -283
+'256':
+  world: world
+  x: -161
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -161 34 -283
+'257':
+  world: world
+  x: -167
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -167 34 -283
+'258':
+  world: world
+  x: -173
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -173 34 -283
+'259':
+  world: world
+  x: -179
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -179 34 -283
+'260':
+  world: world
+  x: -185
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -185 34 -283
+'261':
+  world: world
+  x: -192
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -192 34 -283
+'262':
+  world: world
+  x: -198
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -198 34 -283
+'263':
+  world: world
+  x: -138
+  y: 34
+  z: -283
+  xpower: 25.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -138 34 -283
+'264':
+  world: world
+  x: -141
+  y: 34
+  z: -189
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 25.0
+  searchID: -141 34 -189
+'265':
+  world: world
+  x: -177
+  y: 90
+  z: -126
+  xpower: 0.0
+  ypower: 10000.0
+  zpower: 0.0
+  searchID: -177 90 -126
+'266':
+  world: world
+  x: -177
+  y: 124
+  z: -126
+  xpower: 0.0
+  ypower: 10000.0
+  zpower: 0.0
+  searchID: -177 124 -126
+'267':
+  world: world
+  x: -177
+  y: 186
+  z: -126
+  xpower: 0.0
+  ypower: 10000.0
+  zpower: 0.0
+  searchID: -177 186 -126
+'268':
+  world: world
+  x: -177
+  y: 247
+  z: -126
+  xpower: 0.0
+  ypower: 10000.0
+  zpower: 0.0
+  searchID: -177 247 -126
+'269':
+  world: world
+  x: -52
+  y: 42
+  z: -237
+  xpower: 10.0
+  ypower: 0.0
+  zpower: 0.0
+  searchID: -52 42 -237
+'270':
+  world: world
+  x: -180
+  y: 53
+  z: -263
+  xpower: 0.0
+  ypower: 4.0
+  zpower: 0.0
+  searchID: -180 53 -263
+'271':
+  world: world
+  x: -186
+  y: 53
+  z: -263
+  xpower: 0.0
+  ypower: 4.0
+  zpower: 0.0
+  searchID: -186 53 -263
+'272':
+  world: world
+  x: -40
+  y: 42
+  z: -272
+  xpower: 0.0
+  ypower: 10.0
+  zpower: 0.0
+  searchID: -40 42 -272
+'273':
+  world: world
+  x: -39
+  y: 42
+  z: -272
+  xpower: 0.0
+  ypower: 10.0
+  zpower: 0.0
+  searchID: -39 42 -272
+'274':
+  world: world
+  x: -53
+  y: 42
+  z: -343
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -53 42 -343
+'275':
+  world: world
+  x: -54
+  y: 42
+  z: -343
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -54 42 -343
+'276':
+  world: world
+  x: -55
+  y: 42
+  z: -343
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -55 42 -343
+'277':
+  world: world
+  x: -55
+  y: 42
+  z: -342
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -55 42 -342
+'278':
+  world: world
+  x: -54
+  y: 42
+  z: -342
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -54 42 -342
+'279':
+  world: world
+  x: -53
+  y: 42
+  z: -342
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -53 42 -342
+'280':
+  world: world
+  x: -52
+  y: 42
+  z: -342
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -52 42 -342
+'281':
+  world: world
+  x: -52
+  y: 42
+  z: -341
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -52 42 -341
+'282':
+  world: world
+  x: -53
+  y: 42
+  z: -341
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -53 42 -341
+'283':
+  world: world
+  x: -55
+  y: 42
+  z: -341
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -55 42 -341
+'284':
+  world: world
+  x: -54
+  y: 42
+  z: -341
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -54 42 -341
+'285':
+  world: world
+  x: -52
+  y: 42
+  z: -343
+  xpower: 0.0
+  ypower: 300.0
+  zpower: 0.0
+  searchID: -52 42 -343
+'286':
+  world: world
+  x: -54
+  y: 42
+  z: -340
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 300.0
+  searchID: -54 42 -340
+'287':
+  world: world
+  x: -53
+  y: 42
+  z: -340
+  xpower: 0.0
+  ypower: 0.0
+  zpower: 300.0
+  searchID: -53 42 -340
+'288':
+  world: world
+  x: -200
+  y: 75
+  z: -227
+  xpower: 3.0
+  ypower: 4.0
+  zpower: 3.0
+  searchID: -200 75 -227

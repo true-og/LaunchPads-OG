@@ -1,15 +1,16 @@
 package net.trueog.launchpadsog.Listeners;
 
 import java.util.Vector;
-import net.kyori.adventure.text.Component;
-import net.trueog.launchpadsog.LaunchPadsOG;
-import net.trueog.launchpadsog.config.Config;
+
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
+
+import net.kyori.adventure.text.Component;
+import net.trueog.launchpadsog.LaunchPadsOG;
 
 public class OnBlockPlace implements Listener {
 
@@ -28,8 +29,7 @@ public class OnBlockPlace implements Listener {
 
             if (item.lore().equals(loreList)) {
 
-                Config padConfig = LaunchPadsOG.config();
-                FileConfiguration padCoords = padConfig.getConfig();
+                FileConfiguration padCoords = LaunchPadsOG.getConfiguration();
                 int padNumber = padCoords.getInt("numberOfPads") + 1;
 
                 padCoords.set(padNumber + ".world", block.getWorld().getName());
@@ -42,10 +42,8 @@ public class OnBlockPlace implements Listener {
                 // this makes it easier to search the config file
                 // use CTRL+F and search for the coords of the pad
                 padCoords.set(padNumber + ".searchID", block.getX() + " " + block.getY() + " " + block.getZ());
-
                 padCoords.set("numberOfPads", padNumber);
-
-                padConfig.save();
+                LaunchPadsOG.getPlugin().saveConfig();
 
             }
 

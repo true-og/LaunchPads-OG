@@ -1,6 +1,5 @@
 package net.trueog.launchpadsog.Listeners;
 
-import net.trueog.launchpadsog.LaunchPadsOG;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -13,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
+import net.trueog.launchpadsog.LaunchPadsOG;
+
 public class OnPlayerMove implements Listener {
 
     @EventHandler
@@ -22,7 +23,7 @@ public class OnPlayerMove implements Listener {
 
             // loop through every launch pad and look for one that has the same coords as
             // the player
-            FileConfiguration padConfig = LaunchPadsOG.config().getConfig();
+            FileConfiguration padConfig = LaunchPadsOG.getConfiguration();
             Player player = event.getPlayer();
             String worldName = player.getWorld().getName();
             for (int i = 1; i < padConfig.getInt("numberOfPads") + 1; i++) {
@@ -81,11 +82,10 @@ public class OnPlayerMove implements Listener {
                                 // get the unit vector for the x,z directions
                                 Vector directionVector = playerLocation.getDirection();
 
-                                FileConfiguration launchConfig = LaunchPadsOG.config().getConfig();
                                 // get the xpower, ypower, and zpower
-                                double xPower = launchConfig.getDouble(i + ".xpower");
-                                double yPower = launchConfig.getDouble(i + ".ypower");
-                                double zPower = launchConfig.getDouble(i + ".zpower");
+                                double xPower = padConfig.getDouble(i + ".xpower");
+                                double yPower = padConfig.getDouble(i + ".ypower");
+                                double zPower = padConfig.getDouble(i + ".zpower");
 
                                 player.setVelocity(new Vector(/* x */ xPower * directionVector.getX() * velocityMult,
                                         /* y */ yPower * ySpeed,
@@ -94,16 +94,14 @@ public class OnPlayerMove implements Listener {
                                 // player a wither shoot sound
                                 player.playSound(playerLocation, Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
                                 // spawn particles at the launch pad
-                                Location padLocation = new Location(player.getWorld(),
-                                        launchConfig.getInt(i + ".x") + 0.5, launchConfig.getInt(i + ".y"),
-                                        launchConfig.getInt(i + ".z") + 0.5);
-                                double padParticleCount = launchConfig.getDouble("padLaunchParticleCount");
-                                double padParticlePower = launchConfig.getDouble("padLaunchParticlePower");
+                                Location padLocation = new Location(player.getWorld(), padConfig.getInt(i + ".x") + 0.5,
+                                        padConfig.getInt(i + ".y"), padConfig.getInt(i + ".z") + 0.5);
+                                double padParticleCount = padConfig.getDouble("padLaunchParticleCount");
+                                double padParticlePower = padConfig.getDouble("padLaunchParticlePower");
                                 player.spawnParticle(Particle.FIREWORKS_SPARK, padLocation, (int) padParticleCount, 0,
                                         0, 0, 0.2 * padParticlePower);
 
-                                double playerParticleMult = launchConfig
-                                        .getDouble("playerLaunchParticleCountMultipier");
+                                double playerParticleMult = padConfig.getDouble("playerLaunchParticleCountMultipier");
                                 // spawn particles on the player as they fly through the air
                                 // This equation was gotten with a linear regression on different amounts of
                                 // yPower

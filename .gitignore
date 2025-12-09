@@ -13,11 +13,13 @@ out/
 # JIRA plugin
 atlassian-ide-plugin.xml
 
-# Compiled class file
+# Compiled class files
 *.class
 .classpath
 .project
+libs/.project
 .settings/
+bin/
 
 # Log file
 *.log
