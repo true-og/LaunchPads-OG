@@ -3,6 +3,8 @@ package net.trueog.launchpadsog.Commands;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -33,14 +35,14 @@ public class LaunchPadCommandCompleter implements TabCompleter {
 
         } else if (args.length == 2) {
 
-            if (args[0].equalsIgnoreCase("help")) {
+            if (StringUtils.equalsIgnoreCase(args[0], "help")) {
 
-                // build the list to return
-                ArrayList<String> result = new ArrayList<>();
+                // Build the list to return.
+                final ArrayList<String> result = new ArrayList<>();
                 result.add("set");
                 result.add("delete");
 
-                // sort the list
+                // Sort the list.
                 Collections.sort(result);
 
                 return result;
