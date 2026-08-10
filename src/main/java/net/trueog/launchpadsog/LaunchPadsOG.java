@@ -84,7 +84,9 @@ public final class LaunchPadsOG extends JavaPlugin {
                 // Spawn particles on the pad if the pad is loaded.
                 if (world.isChunkLoaded(padLocation.getChunk())) {
 
-                    world.spawnParticle(Particle.DRAGON_BREATH, padLocation, idleParticleCount, 0, 0, 0,
+                    // Use PORTAL, what ViaRewind downgrades DRAGON_BREATH to, so 1.8 and modern
+                    // clients match.
+                    world.spawnParticle(Particle.PORTAL, padLocation, idleParticleCount, 0, 0, 0,
                             0.05 * idleParticlePower);
 
                 }
