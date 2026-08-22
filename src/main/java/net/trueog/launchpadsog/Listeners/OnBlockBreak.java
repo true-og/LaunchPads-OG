@@ -43,7 +43,8 @@ public class OnBlockBreak implements Listener {
 
         for (int i = 1; i < numberOfPads + 1; i++) {
 
-            if (padCoords.getString("" + i + ".world").equals(world.getName())) {
+            // null-safe order: a gap in the ids must not abort every break event
+            if (world.getName().equals(padCoords.getString("" + i + ".world"))) {
 
                 if (padCoords.getInt("" + i + ".x") == block.getX()) {
 

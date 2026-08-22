@@ -25,7 +25,7 @@ kotlin { jvmToolchain(17) }
 /* ----------------------------- Metadata ------------------------------ */
 group = "net.trueog.launchpads-og" // Declare bundle identifier.
 
-version = "1.7" // Declare plugin version (will be in .jar).
+version = "1.8" // Declare plugin version (will be in .jar).
 
 val apiVersion = "1.19" // Declare minecraft server target version.
 

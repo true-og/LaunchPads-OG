@@ -2,6 +2,8 @@ package net.trueog.launchpadsog.Commands;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.Collections;
 import java.util.Vector;
 
@@ -63,7 +65,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                 // check if there is already a pad in that location
                                 for (int i = 1; i < numberOfPads + 1; i++) {
 
-                                    if (padCoords.getString("" + i + ".world").equals(world.getName())) {
+                                    if (world.getName().equals(padCoords.getString("" + i + ".world"))) {
 
                                         if (padCoords.getInt("" + i + ".x") == playerX) {
 
@@ -123,14 +125,19 @@ public class LaunchPadCommands implements CommandExecutor {
                                 int playerX = playerLocation.getBlockX();
                                 int playerY = playerLocation.getBlockY();
                                 int playerZ = playerLocation.getBlockZ();
-                                double padXPower = Double.parseDouble(args[1]);
-                                double padYPower = Double.parseDouble(args[2]);
-                                double padZPower = Double.parseDouble(args[3]);
+                                final Double padXPower = parseDoubleOrWarn(sender, args[1]);
+                                final Double padYPower = parseDoubleOrWarn(sender, args[2]);
+                                final Double padZPower = parseDoubleOrWarn(sender, args[3]);
+                                if (padXPower == null || padYPower == null || padZPower == null) {
+
+                                    return true;
+
+                                }
 
                                 // check if there is already a pad in that location
                                 for (int i = 1; i < numberOfPads + 1; i++) {
 
-                                    if (padCoords.getString("" + i + ".world").equals(world.getName())) {
+                                    if (world.getName().equals(padCoords.getString("" + i + ".world"))) {
 
                                         if (padCoords.getInt("" + i + ".x") == playerX) {
 
@@ -190,17 +197,24 @@ public class LaunchPadCommands implements CommandExecutor {
                             else if (args.length == 7) {
 
                                 int padNumber = padCoords.getInt("numberOfPads") + 1;
-                                int padX = Integer.parseInt(args[1]);
-                                int padY = Integer.parseInt(args[2]);
-                                int padZ = Integer.parseInt(args[3]);
-                                double padXPower = Double.parseDouble(args[4]);
-                                double padYPower = Double.parseDouble(args[5]);
-                                double padZPower = Double.parseDouble(args[6]);
+                                final Integer padX = parseIntOrWarn(sender, args[1]);
+                                final Integer padY = parseIntOrWarn(sender, args[2]);
+                                final Integer padZ = parseIntOrWarn(sender, args[3]);
+                                final Double padXPower = parseDoubleOrWarn(sender, args[4]);
+                                final Double padYPower = parseDoubleOrWarn(sender, args[5]);
+                                final Double padZPower = parseDoubleOrWarn(sender, args[6]);
+                                if (padX == null || padY == null || padZ == null || padXPower == null
+                                        || padYPower == null || padZPower == null)
+                                {
+
+                                    return true;
+
+                                }
 
                                 // check if there is already a pad in that location
                                 for (int i = 1; i < numberOfPads + 1; i++) {
 
-                                    if (padCoords.getString("" + i + ".world").equals(world.getName())) {
+                                    if (world.getName().equals(padCoords.getString("" + i + ".world"))) {
 
                                         if (padCoords.getInt("" + i + ".x") == padX) {
 
@@ -250,6 +264,15 @@ public class LaunchPadCommands implements CommandExecutor {
                                                 + ", " + padZPower).color(TextColor.color(0, 191, 255)))); // light blue
 
                             }
+                            // wrong arity: say so instead of doing nothing
+                            else {
+
+                                sender.sendMessage(Component.text("[LaunchPad]").color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(
+                                                " Usage: /launchpad set [<xpower> <ypower> <zpower>] or /launchpad set <x> <y> <z> <xpower> <ypower> <zpower>")
+                                                .color(TextColor.color(255, 0, 0))));
+
+                            }
 
                         }
                         // if the player doesn't have permission to use this command,
@@ -273,74 +296,47 @@ public class LaunchPadCommands implements CommandExecutor {
                             LaunchPadsOG.getPlugin(LaunchPadsOG.class).reloadConfig();
                             padCoords = LaunchPadsOG.getConfiguration();
 
-                            // check through the config to make sure that
-                            // there are as many launchpads as numberOfPads
-                            // if there is not, move all of the pad number down
-                            // by one starting at the missing number
+                            // The live accessor means the pre-reload count no
+                            // longer matches the file; re-read before using it.
+                            numberOfPads = Math.max(0, padCoords.getInt("numberOfPads"));
 
-                            int maxNumberOfPads = numberOfPads + 1;
-                            if (numberOfPads > 1) {
+                            // Compact pad ids to run 1..n with no gaps, judged
+                            // via isSet so jar defaults cannot mask a gap.
+                            int writeId = 0;
+                            for (int readId = 1; readId <= numberOfPads; readId++) {
 
-                                for (int i = 1; i < maxNumberOfPads; i++) {
+                                if (!padCoords.isSet(readId + ".world")) {
 
-                                    // if the world is null, then the pad is not set
-                                    if (padCoords.getString(i + ".world") == null) {
-
-                                        // move all other pads up one id number
-                                        for (int j = i; j < padCoords.getInt("numberOfPads") + 1; j++) {
-
-                                            padCoords.set("" + j + ".x", padCoords.getInt("" + (j + 1) + ".x"));
-                                            padCoords.set("" + j + ".y", padCoords.getInt("" + (j + 1) + ".y"));
-                                            padCoords.set("" + j + ".z", padCoords.getInt("" + (j + 1) + ".z"));
-                                            padCoords.set("" + j + ".world",
-                                                    padCoords.getString("" + (j + 1) + ".world"));
-                                            padCoords.set("" + j + ".xpower",
-                                                    padCoords.getDouble("" + (j + 1) + ".xpower"));
-                                            padCoords.set("" + j + ".ypower",
-                                                    padCoords.getDouble("" + (j + 1) + ".ypower"));
-                                            padCoords.set("" + j + ".zpower",
-                                                    padCoords.getDouble("" + (j + 1) + ".zpower"));
-                                            // this makes it easier to search the config file
-                                            // use CTRL+F and search for the coords of the pad
-                                            padCoords.set("" + j + ".searchID",
-                                                    padCoords.getString("" + (j + 1) + ".searchID"));
-
-                                        }
-
-                                        padCoords.set("" + numberOfPads, null);
-                                        padCoords.set("numberOfPads", --numberOfPads);
-
-                                    }
+                                    continue;
 
                                 }
 
-                                // check if the last pad exists
-                                if (padCoords.getString(numberOfPads + ".world") == null) {
+                                writeId++;
+                                if (readId != writeId) {
 
-                                    // decrement numberOfPads by one
-                                    padCoords.set("numberOfPads", --numberOfPads);
-
-                                }
-
-                            } else {
-
-                                // if numberOfPads is 1, then there can only be one pad
-                                // check if it exists. If not, set numberOfPads to 0
-                                if (padCoords.getString("1.world") == null) {
-
-                                    padCoords.set("numberOfPads", 0);
+                                    padCoords.set(writeId + ".x", padCoords.getInt(readId + ".x"));
+                                    padCoords.set(writeId + ".y", padCoords.getInt(readId + ".y"));
+                                    padCoords.set(writeId + ".z", padCoords.getInt(readId + ".z"));
+                                    padCoords.set(writeId + ".world", padCoords.getString(readId + ".world"));
+                                    padCoords.set(writeId + ".xpower", padCoords.getDouble(readId + ".xpower"));
+                                    padCoords.set(writeId + ".ypower", padCoords.getDouble(readId + ".ypower"));
+                                    padCoords.set(writeId + ".zpower", padCoords.getDouble(readId + ".zpower"));
+                                    padCoords.set(writeId + ".searchID", padCoords.getString(readId + ".searchID"));
+                                    padCoords.set("" + readId, null);
 
                                 }
 
                             }
 
-                            // check if numberOfPads is below 0
-                            // if so, set it to 0
-                            if (padCoords.getInt("numberOfPads") < 0) {
+                            // drop any leftover sections above the compacted count
+                            for (int staleId = writeId + 1; staleId <= numberOfPads; staleId++) {
 
-                                padCoords.set("numberOfPads", 0);
+                                padCoords.set("" + staleId, null);
 
                             }
+
+                            padCoords.set("numberOfPads", writeId);
+                            numberOfPads = writeId;
 
                             /* check that everything has what it is supposed to have */
 
@@ -694,7 +690,7 @@ public class LaunchPadCommands implements CommandExecutor {
                                 boolean found = false;
                                 for (int i = 1; i < numberOfPads + 1; i++) {
 
-                                    if (padCoords.getString("" + i + ".world").equals(world.getName())) {
+                                    if (world.getName().equals(padCoords.getString("" + i + ".world"))) {
 
                                         if (padCoords.getInt("" + i + ".x") == block.getX()) {
 
@@ -774,14 +770,19 @@ public class LaunchPadCommands implements CommandExecutor {
                             else if (args.length == 4) {
 
                                 // check for a launchpad at the coords given in the player's world
-                                int blockX = Integer.parseInt(args[1]);
-                                int blockY = Integer.parseInt(args[2]);
-                                int blockZ = Integer.parseInt(args[3]);
+                                final Integer blockX = parseIntOrWarn(sender, args[1]);
+                                final Integer blockY = parseIntOrWarn(sender, args[2]);
+                                final Integer blockZ = parseIntOrWarn(sender, args[3]);
+                                if (blockX == null || blockY == null || blockZ == null) {
+
+                                    return true;
+
+                                }
 
                                 boolean found = false;
                                 for (int i = 1; i < numberOfPads + 1; i++) {
 
-                                    if (padCoords.getString("" + i + ".world").equals(world.getName())) {
+                                    if (world.getName().equals(padCoords.getString("" + i + ".world"))) {
 
                                         if (padCoords.getInt("" + i + ".x") == blockX) {
 
@@ -827,6 +828,10 @@ public class LaunchPadCommands implements CommandExecutor {
                                                                     .text(" Launch Pad Removed From: " + blockX + ", "
                                                                             + blockY + ", " + blockZ)
                                                                     .color(TextColor.color(255, 255, 0))));
+
+                                                    // stop here: the ids just compacted, so
+                                                    // continuing the scan reads dead sections
+                                                    return true;
 
                                                 }
 
@@ -871,14 +876,19 @@ public class LaunchPadCommands implements CommandExecutor {
 
                                 }
 
-                                int blockX = Integer.parseInt(args[2]);
-                                int blockY = Integer.parseInt(args[3]);
-                                int blockZ = Integer.parseInt(args[4]);
+                                final Integer blockX = parseIntOrWarn(sender, args[2]);
+                                final Integer blockY = parseIntOrWarn(sender, args[3]);
+                                final Integer blockZ = parseIntOrWarn(sender, args[4]);
+                                if (blockX == null || blockY == null || blockZ == null) {
+
+                                    return true;
+
+                                }
 
                                 boolean found = false;
                                 for (int i = 1; i < numberOfPads + 1; i++) {
 
-                                    if (padCoords.getString("" + i + ".world").equals(worldName)) {
+                                    if (worldName.equals(padCoords.getString("" + i + ".world"))) {
 
                                         if (padCoords.getInt("" + i + ".x") == blockX) {
 
@@ -925,6 +935,10 @@ public class LaunchPadCommands implements CommandExecutor {
                                                                             + blockY + ", " + blockZ)
                                                                     .color(TextColor.color(255, 255, 0))));
 
+                                                    // stop here: the ids just compacted, so
+                                                    // continuing the scan reads dead sections
+                                                    return true;
+
                                                 }
 
                                             }
@@ -942,6 +956,15 @@ public class LaunchPadCommands implements CommandExecutor {
                                             .append(Component.text(" No Pad Found").color(TextColor.color(255, 0, 0))));
 
                                 }
+
+                            }
+                            // wrong arity: say so instead of doing nothing
+                            else {
+
+                                sender.sendMessage(Component.text("[LaunchPad]").color(TextColor.color(0, 255, 0))
+                                        .append(Component.text(
+                                                " Usage: /launchpad delete [<x> <y> <z>] or /launchpad delete <world> <x> <y> <z>")
+                                                .color(TextColor.color(255, 0, 0))));
 
                             }
 
@@ -1072,6 +1095,18 @@ public class LaunchPadCommands implements CommandExecutor {
 
                     }
 
+                } else if (args[0].equalsIgnoreCase("reloadconfig")) {
+
+                    // console path: reload needs no player context, and index
+                    // recovery must not depend on a logged-in op
+                    if (sender.hasPermission("launchpad.canreload")) {
+
+                        LaunchPadsOG.getPlugin(LaunchPadsOG.class).reloadConfig();
+                        sender.sendMessage(Component.text("[LaunchPad]").color(TextColor.color(0, 255, 0))
+                                .append(Component.text(" Config Reloaded").color(TextColor.color(255, 255, 0))));
+
+                    }
+
                 }
 
             } else {
@@ -1088,17 +1123,68 @@ public class LaunchPadCommands implements CommandExecutor {
 
     }
 
+    // Null when the argument is not a number; the caller bails after the warning.
+    private Integer parseIntOrWarn(CommandSender sender, String arg) {
+
+        try {
+
+            return Integer.parseInt(arg);
+
+        } catch (NumberFormatException e) {
+
+            warnNotANumber(sender, arg);
+            return null;
+
+        }
+
+    }
+
+    private Double parseDoubleOrWarn(CommandSender sender, String arg) {
+
+        try {
+
+            return Double.parseDouble(arg);
+
+        } catch (NumberFormatException e) {
+
+            warnNotANumber(sender, arg);
+            return null;
+
+        }
+
+    }
+
+    private void warnNotANumber(CommandSender sender, String arg) {
+
+        sender.sendMessage(Component.text("[LaunchPad]").color(TextColor.color(0, 255, 0))
+                .append(Component.text(" '" + arg + "' is not a number").color(TextColor.color(255, 0, 0))));
+
+    }
+
     private void restoreOldConfig(FileConfiguration oldPadCoords) {
 
         try {
 
             File configFile = new File(LaunchPadsOG.getPlugin(LaunchPadsOG.class).getDataFolder(), "config.yml");
+            // keep the admin's hand-edited file recoverable before clobbering it
+            if (configFile.exists()) {
+
+                Files.copy(configFile.toPath(), configFile.toPath().resolveSibling("config.yml.bak"),
+                        StandardCopyOption.REPLACE_EXISTING);
+
+            }
+
             oldPadCoords.save(configFile);
-            LaunchPadsOG.getPlugin(LaunchPadsOG.class).reloadConfig();
 
         } catch (IOException e) {
 
             e.printStackTrace();
+
+        } finally {
+
+            // reload whatever is on disk so memory, index, and file agree
+            // even when the rollback write itself failed
+            LaunchPadsOG.getPlugin(LaunchPadsOG.class).reloadConfig();
 
         }
 

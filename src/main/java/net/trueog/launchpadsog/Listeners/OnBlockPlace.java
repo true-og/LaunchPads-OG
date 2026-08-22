@@ -2,6 +2,7 @@ package net.trueog.launchpadsog.Listeners;
 
 import java.util.Vector;
 
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
@@ -14,11 +15,20 @@ import net.trueog.launchpadsog.LaunchPadsOG;
 
 public class OnBlockPlace implements Listener {
 
-    @EventHandler
+    // ignoreCancelled: a placement a region plugin blocked must not become a
+    // working pad on disk anyway
+    @EventHandler(ignoreCancelled = true)
     public void onBlockPlace(BlockPlaceEvent event) {
 
         ItemStack item = event.getItemInHand();
         Block block = event.getBlockPlaced();
+
+        // the pad item is a pressure plate; lore alone must not qualify
+        if (item.getType() != Material.STONE_PRESSURE_PLATE) {
+
+            return;
+
+        }
 
         Vector<Component> loreList = new Vector<>();
         loreList.add(Component.text("Launches you in the"));

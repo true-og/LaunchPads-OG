@@ -1,36 +1,60 @@
 package net.trueog.launchpadsog.Listeners;
 
-import java.util.ArrayList;
-import net.trueog.launchpadsog.LaunchPadsOG;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByBlockEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+
+import net.trueog.launchpadsog.LaunchPadsOG;
 
 public class OnEntityDamage implements Listener {
 
-    // @EventHandler(priority = EventPriority.HIGHEST)
-    @EventHandler
+    // HIGHEST + ignoreCancelled: a cancelled event spends nothing, and little
+    // runs after us that could un-cancel our own cancellation.
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageEvent event) {
 
-        // check if the damage was fall damage
-        if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
+        // check that this is a landing hurting a player
+        if (!(event.getEntity() instanceof Player player) || !endsALaunch(event)) {
 
-            // check if the entity was a player
-            if (event.getEntity() instanceof Player) {
+            return;
 
-                // check the entity was in the launchedPlayers list
-                ArrayList<Player> launchedList = LaunchPadsOG.getLaunchedPlayers();
-                Player eventPlayer = (Player) event.getEntity();
-                if (launchedList.contains(eventPlayer)) {
+        }
 
-                    event.setCancelled(true);
+        // Cancelled even at zero final damage, so the landing costs no hurt
+        // animation or absorption; pre-liftoff damage is never consumed.
+        if (LaunchPadsOG.consumeAirborneLaunch(player)) {
 
-                    launchedList.remove(eventPlayer);
+            event.setCancelled(true);
+
+        }
+
+    }
+
+    // Landing on a stalagmite reports CONTACT rather than FALL, but it is
+    // still the launch arc ending, so both count.
+    private static boolean endsALaunch(EntityDamageEvent event) {
+
+        switch (event.getCause()) {
+
+            case FALL:
+                return true;
+
+            case CONTACT:
+                if (event instanceof EntityDamageByBlockEvent blockDamage) {
+
+                    final Block damager = blockDamage.getDamager();
+                    return damager != null && damager.getType() == Material.POINTED_DRIPSTONE;
 
                 }
+                return false;
 
-            }
+            default:
+                return false;
 
         }
 

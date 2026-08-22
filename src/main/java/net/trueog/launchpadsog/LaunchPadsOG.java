@@ -1,6 +1,8 @@
 package net.trueog.launchpadsog;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -15,19 +17,27 @@ import net.trueog.launchpadsog.Commands.LaunchPadCommands;
 import net.trueog.launchpadsog.Listeners.OnBlockBreak;
 import net.trueog.launchpadsog.Listeners.OnBlockPlace;
 import net.trueog.launchpadsog.Listeners.OnEntityDamage;
+import net.trueog.launchpadsog.Listeners.OnLaunchEnd;
 import net.trueog.launchpadsog.Listeners.OnPlayerInteract;
 import net.trueog.launchpadsog.Listeners.OnPlayerMove;
 
 public final class LaunchPadsOG extends JavaPlugin {
 
     private static LaunchPadsOG plugin;
-    private static FileConfiguration config;
 
-    // This list will hold the players that have used a launchpad and are flying
-    // through the air
-    // then, when they land, I remove them from the list, and stop them from taking
-    // fall damage.
-    private static final ArrayList<Player> launchedPlayers = new ArrayList<>();
+    // Only an AIRBORNE protection can be spent or dropped, so a slow client
+    // still reporting the pad position cannot burn it before liftoff.
+    public enum LaunchPhase {
+        AWAITING_LIFTOFF, AIRBORNE
+    }
+
+    // Players inside a live launch arc, tracked by id so relogs and repeated
+    // pad hits can neither stack protections nor strand stale entries.
+    private static final Map<UUID, LaunchPhase> launchedPlayers = new HashMap<>();
+
+    // Pad ids indexed by "world:x:y:z", so the move handler does one map
+    // lookup instead of scanning every configured pad on every step.
+    private static final Map<String, Integer> padsByBlock = new HashMap<>();
 
     @Override
     public void onEnable() {
@@ -35,12 +45,10 @@ public final class LaunchPadsOG extends JavaPlugin {
         plugin = this;
 
         saveDefaultConfig();
-        config = this.getConfig();
-
         reloadConfig();
 
         // If the launchpad is craftable, add the recipe to the server.
-        if ((boolean) config.get("cancraft")) {
+        if (getConfig().getBoolean("cancraft")) {
 
             // Create the recipe for the launchpad
             // make it really expensive by locking it
@@ -63,6 +71,7 @@ public final class LaunchPadsOG extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new OnBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new OnBlockPlace(), this);
         getServer().getPluginManager().registerEvents(new OnEntityDamage(), this);
+        getServer().getPluginManager().registerEvents(new OnLaunchEnd(), this);
         getCommand("launchpad").setExecutor(new LaunchPadCommands());
         getCommand("launchpad").setTabCompleter(new LaunchPadCommandCompleter());
 
@@ -70,30 +79,66 @@ public final class LaunchPadsOG extends JavaPlugin {
         // to signify that they are launchpads.
         Bukkit.getScheduler().runTaskTimer(this, () -> {
 
-            for (int i = 1; i < config.getInt("numberOfPads") + 1; i++) {
+            final FileConfiguration padConfig = getConfig();
+            final int idleParticleCount = padConfig.getInt("idleParticleCount");
+            final double idleParticlePower = padConfig.getDouble("idleParticlePower");
+            for (int i = 1; i < padConfig.getInt("numberOfPads") + 1; i++) {
 
-                final String worldName = config.getString(i + ".world");
-                final World world = Bukkit.getWorld(worldName);
-                final double padX = config.getInt(i + ".x") + 0.5;
-                final double padY = config.getInt(i + ".y");
-                final double padZ = config.getInt(i + ".z") + 0.5;
-                final Location padLocation = new Location(world, padX, padY, padZ);
-                final int idleParticleCount = config.getInt("idleParticleCount");
-                final double idleParticlePower = config.getDouble("idleParticlePower");
+                final String worldName = padConfig.getString(i + ".world");
+                final World world = worldName == null ? null : Bukkit.getWorld(worldName);
+                if (world == null) {
 
-                // Spawn particles on the pad if the pad is loaded.
-                if (world.isChunkLoaded(padLocation.getChunk())) {
-
-                    // Use PORTAL, what ViaRewind downgrades DRAGON_BREATH to, so 1.8 and modern
-                    // clients match.
-                    world.spawnParticle(Particle.PORTAL, padLocation, idleParticleCount, 0, 0, 0,
-                            0.05 * idleParticlePower);
+                    continue;
 
                 }
+
+                final int padX = padConfig.getInt(i + ".x");
+                final int padY = padConfig.getInt(i + ".y");
+                final int padZ = padConfig.getInt(i + ".z");
+
+                // Asked by chunk coordinates on purpose: getChunk() on a
+                // location loads and pins the chunk just to answer.
+                if (!world.isChunkLoaded(padX >> 4, padZ >> 4)) {
+
+                    continue;
+
+                }
+
+                final Location padLocation = new Location(world, padX + 0.5, padY, padZ + 0.5);
+
+                // Use PORTAL, what ViaRewind downgrades DRAGON_BREATH to, so 1.8 and modern
+                // clients match.
+                world.spawnParticle(Particle.PORTAL, padLocation, idleParticleCount, 0, 0, 0, 0.05 * idleParticlePower);
 
             }
 
         }, 1, 30);
+
+    }
+
+    @Override
+    public void onDisable() {
+
+        launchedPlayers.clear();
+        padsByBlock.clear();
+
+    }
+
+    // Every save and reload funnels through these, so the pad index can never
+    // go stale against the configuration.
+    @Override
+    public void saveConfig() {
+
+        super.saveConfig();
+        rebuildPadIndex();
+
+    }
+
+    @Override
+    public void reloadConfig() {
+
+        super.reloadConfig();
+        rebuildPadIndex();
 
     }
 
@@ -103,15 +148,76 @@ public final class LaunchPadsOG extends JavaPlugin {
 
     }
 
+    // Always the live configuration: the old cached object was silently
+    // swapped out by reloadConfig(), losing /launchpad set edits on restart.
     public static FileConfiguration getConfiguration() {
 
-        return config;
+        return plugin.getConfig();
 
     }
 
-    public static ArrayList<Player> getLaunchedPlayers() {
+    public static void markLaunched(Player player) {
 
-        return launchedPlayers;
+        launchedPlayers.put(player.getUniqueId(), LaunchPhase.AWAITING_LIFTOFF);
+
+    }
+
+    public static LaunchPhase launchPhase(Player player) {
+
+        return launchedPlayers.get(player.getUniqueId());
+
+    }
+
+    public static void markAirborne(Player player) {
+
+        launchedPlayers.replace(player.getUniqueId(), LaunchPhase.AIRBORNE);
+
+    }
+
+    // Spends the protection of an arc in flight; damage before liftoff is the
+    // arrival fall onto the pad, which stays the player's own to eat.
+    public static boolean consumeAirborneLaunch(Player player) {
+
+        if (launchedPlayers.get(player.getUniqueId()) != LaunchPhase.AIRBORNE)
+            return false;
+        launchedPlayers.remove(player.getUniqueId());
+        return true;
+
+    }
+
+    public static void clearLaunch(Player player) {
+
+        launchedPlayers.remove(player.getUniqueId());
+
+    }
+
+    // The pad id at a block position, or null when no pad sits there.
+    public static Integer padAt(String worldName, int x, int y, int z) {
+
+        return padsByBlock.get(worldName + ":" + x + ":" + y + ":" + z);
+
+    }
+
+    private void rebuildPadIndex() {
+
+        padsByBlock.clear();
+        final FileConfiguration padConfig = getConfig();
+        for (int i = 1; i < padConfig.getInt("numberOfPads") + 1; i++) {
+
+            // isSet ignores the jar defaults; plain getters resolve through
+            // them and would resurrect every hand-deleted pad.
+            if (!padConfig.isSet(i + ".world")) {
+
+                continue;
+
+            }
+
+            // putIfAbsent keeps the old scan's first-match-wins order when two
+            // entries share one block.
+            padsByBlock.putIfAbsent(padConfig.getString(i + ".world") + ":" + padConfig.getInt(i + ".x") + ":"
+                    + padConfig.getInt(i + ".y") + ":" + padConfig.getInt(i + ".z"), i);
+
+        }
 
     }
 
