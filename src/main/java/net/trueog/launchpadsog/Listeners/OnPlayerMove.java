@@ -160,7 +160,7 @@ public class OnPlayerMove implements Listener {
             final double padParticleCount = padConfig.getDouble("padLaunchParticleCount");
             final double padParticlePower = padConfig.getDouble("padLaunchParticlePower");
             // Visible to everyone nearby, matching the in-air trail below.
-            player.getWorld().spawnParticle(Particle.FIREWORKS_SPARK, padLocation, (int) padParticleCount, 0, 0, 0,
+            LaunchPadsOG.spawnParticleForAllClients(Particle.FIREWORKS_SPARK, padLocation, (int) padParticleCount,
                     0.2 * padParticlePower);
 
             final double playerParticleMult = padConfig.getDouble("playerLaunchParticleCountMultipier");
@@ -173,12 +173,11 @@ public class OnPlayerMove implements Listener {
             // \/ --------- \/
             for (int j = 0; j < Math.min(yPower * 8 - 15, 25); j++) {
 
-                // Max out the number of particles at 50
-                Bukkit.getScheduler()
-                        .runTaskLater(
-                                LaunchPadsOG.getPlugin(), () -> player.getWorld().spawnParticle(Particle.SPELL,
-                                        player.getLocation(), (int) Math.min(xPower * zPower * playerParticleMult, 50)),
-                                j);
+                // Max out the number of particles at 50, speed 1 as before.
+                Bukkit.getScheduler().runTaskLater(LaunchPadsOG.getPlugin(),
+                        () -> LaunchPadsOG.spawnParticleForAllClients(Particle.SPELL, player.getLocation(),
+                                (int) Math.min(xPower * zPower * playerParticleMult, 50), 1),
+                        j);
 
             }
 

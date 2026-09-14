@@ -1,6 +1,8 @@
 package net.trueog.launchpadsog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -38,6 +40,9 @@ public final class LaunchPadsOG extends JavaPlugin {
     // Pad ids indexed by "world:x:y:z", so the move handler does one map
     // lookup instead of scanning every configured pad on every step.
     private static final Map<String, Integer> padsByBlock = new HashMap<>();
+
+    // Particle reach, squared. Vanilla un-forced range on modern clients.
+    private static final double PARTICLE_RANGE_SQUARED = 32 * 32;
 
     @Override
     public void onEnable() {
@@ -108,11 +113,43 @@ public final class LaunchPadsOG extends JavaPlugin {
 
                 // Use PORTAL, what ViaRewind downgrades DRAGON_BREATH to, so 1.8 and modern
                 // clients match.
-                world.spawnParticle(Particle.PORTAL, padLocation, idleParticleCount, 0, 0, 0, 0.05 * idleParticlePower);
+                spawnParticleForAllClients(Particle.PORTAL, padLocation, idleParticleCount, 0.05 * idleParticlePower);
 
             }
 
         }, 1, 30);
+
+    }
+
+    // Forced particle within 32 blocks, so 1.8 and modern clients match.
+    public static void spawnParticleForAllClients(Particle particle, Location location, int count, double speed) {
+
+        final World world = location.getWorld();
+        if (world == null) {
+
+            return;
+
+        }
+
+        final List<Player> receivers = new ArrayList<>();
+        for (final Player player : world.getPlayers()) {
+
+            if (player.getLocation().distanceSquared(location) <= PARTICLE_RANGE_SQUARED) {
+
+                receivers.add(player);
+
+            }
+
+        }
+
+        if (receivers.isEmpty()) {
+
+            return;
+
+        }
+
+        world.spawnParticle(particle, receivers, null, location.getX(), location.getY(), location.getZ(), count, 0, 0,
+                0, speed, null, true);
 
     }
 
